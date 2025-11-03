@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    text-decoration: none;
+    transition: all .3s;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    background-color: #cb6ce6;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.trash-bg-1,
+.trash-bg-2,
+.trash-bg-3,
+.trash-bg-4,
+.trash-bg-5,
+.trash-bg-6,
+.trash-bg-7,
+.trash-bg-8,
+.trash-bg-9,
+.trash-bg-10,
+.trash-bg-11 {
+    position: fixed;
+    font-size: 200px;
+    color: #53b8487d;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.trash-bg-1 i,
+.trash-bg-2 i,
+.trash-bg-3 i,
+.trash-bg-4 i,
+.trash-bg-5 i,
+.trash-bg-6 i,
+.trash-bg-7 i,
+.trash-bg-8 i,
+.trash-bg-9 i,
+.trash-bg-10 i,
+.trash-bg-11 i {
+    display: block;
+}
+
+body::before {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow1 20s linear infinite;
+}
+
+body::after {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow2 25s linear infinite 2s;
+}
+
+.trash-bg-1 {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow3 22s linear infinite 4s;
+}
+
+.trash-bg-2 {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow1 28s linear infinite 6s;
+}
+
+.trash-bg-3 {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow2 24s linear infinite 8s;
+}
+
+.trash-bg-4 {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow3 26s linear infinite 10s;
+}
+
+.trash-bg-5 {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow1 23s linear infinite 12s;
+}
+
+.trash-bg-6 {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow2 27s linear infinite 14s;
+}
+
+.trash-bg-7 {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow3 25s linear infinite 16s;
+}
+
+.trash-bg-8 {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow1 23s linear infinite 18s;
+}
+
+.trash-bg-9 {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow2 26s linear infinite 20s;
+}
+
+.trash-bg-10 {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow3 24s linear infinite 22s;
+}
+
+.trash-bg-11 {
+    top: -50px;
+    left: -100px;
+    animation: moveTrashRow1 27s linear infinite 24s;
+}
+
+@keyframes moveTrashRow1 {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-100px, 0) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+        visibility: visible;
+    }
+    90% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(calc(100vw + 100px), 20vh) rotate(360deg);
+    }
+}
+
+@keyframes moveTrashRow2 {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-100px, 0) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+        visibility: visible;
+    }
+    90% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(calc(100vw + 100px), 50vh) rotate(-360deg);
+    }
+}
+
+@keyframes moveTrashRow3 {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-100px, 0) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+        visibility: visible;
+    }
+    90% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(calc(100vw + 100px), 80vh) rotate(720deg);
+    }
+}
+img {
+    width: 750px;
+    margin-top: 0;
+    margin-bottom: 5rem;
+}
+h1 {
+    font-size: 120px;
+    font-weight: 700;
+    color: #fff;
+    margin: 10px 0;
+}
+.startpoga{
+    display: inline-block;
+    padding: 25px 50px;
+    border: 6px solid #fff;
+    background-color: #fff;
+    color: #cb6ce6;
+    font-size: 32px;
+    font-weight: 700;
+    border-radius: 35px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    margin-top: 10rem;
+}
+.startpoga:hover {
+    background-color: #fff;
+    border-color: #54B848;
+    color: #fff;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(115%) ;
+}
+a{
+    color: #143D8C;
+}
+
+/* SPELITES CSS, TO KAS AUGSAA KADS LUDZU SALABOJIET, neaiztiekot sito :SOBBB: */
+body {
+  margin: 0;
+  background: #a3d9a5;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+#game {
+  position: relative;
+  width: 400px;
+  height: 600px;
+  margin: 30px auto;
+  background: #e0f7e0;
+  border: 3px solid #333;
+  overflow: hidden;
+}
+
+.bin {
+  position: absolute;
+  bottom: 10px;
+  left: 180px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.item {
+  position: absolute;
+  top: 0;
+  width: 4rem; /* Set a consistent width */
+  height: 4rem; /* Set a consistent height */
+  object-fit: contain; /* Ensures the image fills the box while maintaining aspect ratio */
+  border-radius: 0.1rem; /* Optional: Add rounded corners */
+}
+
+#score {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* Responsive: iPhone 12 Pro and similar narrow screens */
+@media (max-width: 420px) {
+    /* make the decorative trash icons much smaller and less intrusive */
+    .trash-bg-1,
+    .trash-bg-2,
+    .trash-bg-3,
+    .trash-bg-4,
+    .trash-bg-5,
+    .trash-bg-6,
+    .trash-bg-7,
+    .trash-bg-8,
+    .trash-bg-9,
+    .trash-bg-10,
+    .trash-bg-11 {
+        font-size: 48px;
+        opacity: 0; /* keep hidden until animation makes them visible */
+    }
+
+    /* ensure the actual <i> icon inherits the smaller size */
+    .trash-bg-1 i,
+    .trash-bg-2 i,
+    .trash-bg-3 i,
+    .trash-bg-4 i,
+    .trash-bg-5 i,
+    .trash-bg-6 i,
+    .trash-bg-7 i,
+    .trash-bg-8 i,
+    .trash-bg-9 i,
+    .trash-bg-10 i,
+    .trash-bg-11 i {
+        font-size: inherit;
+    }
+
+    /* scale down the logo, heading and button for mobile */
+    img { width: 280px; margin-top: 0; }
+    h1 { font-size: 40px; margin: 12px 0; }
+    .startpoga { padding: 14px 28px; font-size: 18px; border-radius: 22px; }
+
+    /* Reduce the distance the icons travel so they look natural on small screens */
+    @keyframes moveTrashRow1 {
+        0% { opacity: 0; visibility: hidden; transform: translate(-100px, 0) rotate(0deg); }
+        10% { opacity: 1; visibility: visible; }
+        90% { opacity: 1; visibility: visible; }
+        100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 60px), 18vh) rotate(360deg); }
+    }
+
+    @keyframes moveTrashRow2 {
+        0% { opacity: 0; visibility: hidden; transform: translate(-100px, 0) rotate(0deg); }
+        10% { opacity: 1; visibility: visible; }
+        90% { opacity: 1; visibility: visible; }
+        100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 60px), 45vh) rotate(-360deg); }
+    }
+
+    @keyframes moveTrashRow3 {
+        0% { opacity: 0; visibility: hidden; transform: translate(-100px, 0) rotate(0deg); }
+        10% { opacity: 1; visibility: visible; }
+        90% { opacity: 1; visibility: visible; }
+        100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 60px), 72vh) rotate(720deg); }
+    }
+}
