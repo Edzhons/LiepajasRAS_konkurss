@@ -35,25 +35,31 @@ if (window.location.pathname.endsWith("spele.html")) {
     const level = levels[levelIndex];
     bin.src = level.binImg;
     scoreDisplay.textContent = `Score: ${score} — Līmenis ${levelIndex + 1}: ${level.name}`;
-
-    // Show "Level start" message
     showMessage(`Sākas ${levelIndex + 1}. līmenis — ${level.name}!`);
 
-    // Clear previous items
     items.forEach(item => item.remove());
     items = [];
 
-    // Start spawning and updating
     clearIntervals();
     spawnInterval = setInterval(spawnItem, 1000);
     updateInterval = setInterval(() => updateGame(level.target), 30);
 
-    // Start timer
+    // Level timer
     levelTime = 20;
     levelTimer = setInterval(() => {
       levelTime--;
       if (levelTime <= 0) {
-        nextLevel();
+        clearInterval(levelTimer);
+        // stop spawning new items
+        clearInterval(spawnInterval);
+
+        // check every 200ms if all items are gone
+        const waitForItems = setInterval(() => {
+          if (items.length === 0) {
+            clearInterval(waitForItems);
+            nextLevel();
+          }
+        }, 200);
       }
     }, 1000);
   }
@@ -142,12 +148,12 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') {
     left -= 20;
     if (left < 0) {
-      left = 340; // Wrap around to the right side
+      left = 320; // Wrap around to the right side
     }
   }
   if (e.key === 'ArrowRight') {
     left += 20;
-    if (left > 340) {
+    if (left > 320) {
       left = 0; // Wrap around to the left side
     }
   }
