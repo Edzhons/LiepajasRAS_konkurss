@@ -138,33 +138,52 @@ if (window.location.pathname.endsWith("spele.html")) {
     });
   }
 
-
-
 // --- BIN MOVEMENT ---
+let lastMoveTime = 0; // Tracks the last time the bin moved
+const moveCooldown = 100; // Minimum time (in ms) between movements
+
 document.addEventListener('keydown', e => {
-  // Remove transition temporarily for wrapping
-  bin.style.transition = 'none';
+  const currentTime = Date.now();
+
+  // Only allow movement if enough time has passed since the last move
+  if (currentTime - lastMoveTime < moveCooldown) {
+    return;
+  }
+  lastMoveTime = currentTime;
 
   if (e.key === 'ArrowLeft') {
-    left -= 20;
-    if (left < 0) {
+    if (left <= 0) { // Only wrap when exactly at the left boundary
+      // Disable transition and teleport to the right side
+      bin.style.transition = 'none';
       left = 320; // Wrap around to the right side
+      bin.style.left = left + 'px';
+
+      // Re-enable transition for smooth movement
+      setTimeout(() => {
+        bin.style.transition = 'left 0.2s ease';
+      }, 0);
+    } else if (left > 0) { // Normal movement
+      left -= 40;
+      bin.style.left = left + 'px';
     }
   }
+
   if (e.key === 'ArrowRight') {
-    left += 20;
-    if (left > 320) {
+    if (left >= 320) { // Only wrap when exactly at the right boundary
+      // Disable transition and teleport to the left side
+      bin.style.transition = 'none';
       left = 0; // Wrap around to the left side
+      bin.style.left = left + 'px';
+
+      // Re-enable transition for smooth movement
+      setTimeout(() => {
+        bin.style.transition = 'left 0.2s ease';
+      }, 0);
+    } else if (left < 320) { // Normal movement
+      left += 40;
+      bin.style.left = left + 'px';
     }
   }
-
-  // Update position instantly
-  bin.style.left = left + 'px';
-
-  // Re-enable transition for smooth movement
-  setTimeout(() => {
-    bin.style.transition = 'left 0.2s ease';
-  }, 0);
 });
 
   // --- HELPER FUNCTIONS ---
