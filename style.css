@@ -226,44 +226,79 @@ a{
 
 /* SPELITES CSS, TO KAS AUGSAA KADS LUDZU SALABOJIET, neaiztiekot sito :SOBBB: */
 body {
-  margin: 0;
-  background: #a3d9a5;
-  overflow: hidden;
-  font-family: sans-serif;
+    margin: 0;
+    background: #a3d9a5;
+    overflow: hidden;
+    font-family: sans-serif;
 }
 
+/* Make the game container responsive: it will grow to fill most of the viewport on
+     phones and tablets while keeping the original 2:3 aspect ratio (400x600). */
+/* Prefer filling vertical space on tall screens so the light green game area
+   becomes much larger and visually closer to the edges of the page. We keep
+   the original 2:3 aspect ratio but calculate width from viewport height so
+   tall screens produce a larger box. */
 #game {
-  position: relative;
-  width: 400px;
-  height: 600px;
-  margin: 30px auto;
-  background: #e0f7e0;
-  border: 3px solid #333;
-  overflow: hidden;
+    position: relative;
+    /* Calculate width from available viewport height to prioritize vertical fill.
+       Use min() so very narrow screens still respect viewport width. */
+    width: min(92vw, calc(88vh * 2 / 3));
+    max-width: 1000px; /* allow much larger game boxes on big screens */
+    aspect-ratio: 2 / 3; /* keeps same proportion as 400x600 */
+    height: auto; /* height is derived from aspect-ratio and chosen width */
+    margin: 12px auto;
+    background: #e0f7e0;
+    border: 3px solid #333;
+    overflow: hidden;
+    touch-action: none; /* improve touch interactions */
 }
 
+/* Scale the bin and items relative to the game container so they remain usable
+     on small screens and look larger on tablets/phones. Percentages are relative
+     to the #game container because items are positioned inside it. */
 .bin {
-  position: absolute;
-  bottom: 10px;
-  left: 180px;
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
+    position: absolute;
+    bottom: 2.5%;
+    left: 45%; /* visually roughly centered; JS will still control left via inline style */
+    width: 18%;
+    max-width: 120px;
+    min-width: 48px;
+    height: auto;
+    object-fit: contain;
 }
 
 .item {
-  position: absolute;
-  top: 0;
-  width: 4rem; /* Set a consistent width */
-  height: 4rem; /* Set a consistent height */
-  object-fit: contain; /* Ensures the image fills the box while maintaining aspect ratio */
-  border-radius: 0.1rem; /* Optional: Add rounded corners */
+    position: absolute;
+    top: 0;
+    width: 4rem; /* restore original falling object size */
+    height: 4rem; /* restore original falling object size */
+    object-fit: contain; /* Ensures the image fills the box while maintaining aspect ratio */
+    border-radius: 0.1rem;
 }
 
 #score {
-  text-align: center;
-  font-size: 20px;
-  margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* Tablet breakpoint: give a bit more breathing room and larger controls */
+@media (max-width: 900px) and (min-width: 421px) {
+    #game {
+        width: min(94vw, 520px);
+        max-width: 520px;
+    }
+    .bin { width: 16%; }
+    .item { width: 4rem; height: 4rem; }
+    #score { font-size: 18px; }
+}
+
+/* Small phone tweaks (override earlier rules if needed) */
+@media (max-width: 420px) {
+    #game { width: 96vw; margin: 12px auto; }
+    .bin { width: 20%; bottom: 3%; }
+    .item { width: 4rem; height: 4rem; }
+    #score { font-size: 16px; }
 }
 
 /* Responsive: iPhone 12 Pro and similar narrow screens */

@@ -6,7 +6,7 @@ if (window.location.pathname.endsWith("spele.html")) {
 
   let score = 0;
   let items = [];
-  let left = 180;
+  let left = 0; // will be initialized to centered value based on #game width
   let currentLevel = 0;
   let levelTime = 20; // seconds per level
   let levelTimer;
@@ -64,6 +64,22 @@ if (window.location.pathname.endsWith("spele.html")) {
     }, 1000);
   }
 
+  // Initialize bin position to horizontally center inside the #game area
+  function setBinInitial() {
+    // ensure layout has been calculated
+    const gw = game.clientWidth || 400;
+    const bw = bin.offsetWidth || 80;
+    left = Math.round((gw - bw) / 2);
+    // clamp
+    left = Math.max(0, Math.min(left, gw - bw));
+    bin.style.left = left + 'px';
+  }
+
+  // keep bin centered when viewport changes
+  window.addEventListener('resize', () => {
+    setBinInitial();
+  });
+
   function nextLevel() {
     clearIntervals();
     currentLevel++;
@@ -90,25 +106,31 @@ if (window.location.pathname.endsWith("spele.html")) {
     item.src = imageSrc;
     item.classList.add('item');
     item.dataset.type = randomType.type;
-    item.style.left = Math.random() * 360 + 'px';
     game.appendChild(item);
+
+    // After the item exists in the DOM we can measure its width and place it
+    const gw = game.clientWidth || 400;
+    const iw = item.offsetWidth || parseFloat(getComputedStyle(item).width) || 64;
+    const maxLeftForItem = Math.max(0, gw - iw - 4); // small padding
+    const randLeft = Math.random() * maxLeftForItem;
+    item.style.left = randLeft + 'px';
     items.push(item);
   }
 
   function updateGame(targetType) {
-
+    const gameRect = game.getBoundingClientRect();
 
     items.forEach((item, i) => {
       const top = parseFloat(item.style.top || 0);
       item.style.top = top + 4 + 'px';
 
-    const itemRect = item.getBoundingClientRect();
+      const itemRect = item.getBoundingClientRect();
 
-    const margin = 30; // Adjust this value to control the collision sensitivity
-    const binRect = {
+      const margin = 15; // reduced collision margin for more precise hits
+      const binRect = {
         top: bin.getBoundingClientRect().top + margin,
         right: bin.getBoundingClientRect().right - margin,
-        bottom: bin.getBoundingClientRect().bottom - margin,
+        bottom: bin.getBoundingClientRect().bottom, // no margin at bottom
         left: bin.getBoundingClientRect().left + margin
       };
 
@@ -130,8 +152,8 @@ if (window.location.pathname.endsWith("spele.html")) {
         items.splice(i, 1);
       }
 
-      // Remove if out of bounds
-      if (top > 600) {
+      // Remove if fallen past the bottom of game area with extra buffer
+      if (itemRect.top > gameRect.bottom + 50) { // increased buffer to 50px
         item.remove();
         items.splice(i, 1);
       }
@@ -152,35 +174,39 @@ document.addEventListener('keydown', e => {
   lastMoveTime = currentTime;
 
   if (e.key === 'ArrowLeft') {
-    if (left <= 0) { // Only wrap when exactly at the left boundary
-      // Disable transition and teleport to the right side
-      bin.style.transition = 'none';
-      left = 320; // Wrap around to the right side
-      bin.style.left = left + 'px';
+    const gw = game.clientWidth || 400;
+    const bw = bin.offsetWidth || 80;
+    const maxLeft = Math.max(0, gw - bw);
+    const step = Math.max(30, Math.round(gw / 8)); // relative step, min 30px
 
-      // Re-enable transition for smooth movement
+    if (left <= 0) { // wrap to right
+      bin.style.transition = 'none';
+      left = maxLeft;
+      bin.style.left = left + 'px';
       setTimeout(() => {
         bin.style.transition = 'left 0.2s ease';
       }, 0);
-    } else if (left > 0) { // Normal movement
-      left -= 40;
+    } else { // normal movement
+      left = Math.max(0, left - step);
       bin.style.left = left + 'px';
     }
   }
 
   if (e.key === 'ArrowRight') {
-    if (left >= 320) { // Only wrap when exactly at the right boundary
-      // Disable transition and teleport to the left side
-      bin.style.transition = 'none';
-      left = 0; // Wrap around to the left side
-      bin.style.left = left + 'px';
+    const gw = game.clientWidth || 400;
+    const bw = bin.offsetWidth || 80;
+    const maxLeft = Math.max(0, gw - bw);
+    const step = Math.max(30, Math.round(gw / 8));
 
-      // Re-enable transition for smooth movement
+    if (left >= maxLeft) {
+      bin.style.transition = 'none';
+      left = 0;
+      bin.style.left = left + 'px';
       setTimeout(() => {
         bin.style.transition = 'left 0.2s ease';
       }, 0);
-    } else if (left < 320) { // Normal movement
-      left += 40;
+    } else {
+      left = Math.min(maxLeft, left + step);
       bin.style.left = left + 'px';
     }
   }
@@ -205,5 +231,7 @@ document.addEventListener('keydown', e => {
   }
 
   // --- START GAME ---
+  // ensure bin is centered based on initial game size
+  setBinInitial();
   startLevel(currentLevel);
 }
