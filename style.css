@@ -290,7 +290,7 @@ body {
 #level-icon {
   width: 15rem; /* Set a fixed width */
   height: 15rem; /* Maintain aspect ratio */
-  margin-top: 2rem; /* Add some spacing below the level title */
+  margin-top: 10rem; /* Add some spacing below the level title */
   object-fit: contain;
 }
 
@@ -315,8 +315,9 @@ body {
 /* Right Section: Score Panel */
 #score-panel {
   flex: 1; /* Take up equal space */
+  flex-direction: column;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -324,6 +325,18 @@ body {
   font-size: 34px;
   font-weight: bold;
   color: #54B848;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px 20px;
+  margin-bottom: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#timer {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FF5733; /* A distinct color for the timer */
+  margin-top: 10px; /* Add spacing between the score and the timer */
   background: rgba(255, 255, 255, 0.8);
   padding: 10px 20px;
   border-radius: 8px;

@@ -53,8 +53,14 @@ if (window.location.pathname.endsWith("spele.html")) {
 
     // Level timer
     levelTime = 20;
+    const timerDisplay = document.getElementById('timer');
+    timerDisplay.textContent = `Laiks: ${levelTime}s`;
+
+
     levelTimer = setInterval(() => {
       levelTime--;
+      timerDisplay.textContent = `Laiks: ${levelTime}s`;
+      
       if (levelTime <= 0) {
         clearInterval(levelTimer);
         clearInterval(spawnInterval);
