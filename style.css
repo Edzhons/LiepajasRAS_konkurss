@@ -288,9 +288,10 @@ body {
 }
 
 #level-icon {
-  width: 100px; /* Set a fixed width */
-  height: auto; /* Maintain aspect ratio */
-  margin-top: 10px; /* Add some spacing below the level title */
+  width: 15rem; /* Set a fixed width */
+  height: 15rem; /* Maintain aspect ratio */
+  margin-top: 2rem; /* Add some spacing below the level title */
+  object-fit: contain;
 }
 
 /* Center Section: Game Container */
