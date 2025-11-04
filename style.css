@@ -265,6 +265,7 @@ body {
     min-width: 48px;
     height: auto;
     object-fit: contain;
+    z-index: 2; /* ensure bin is always above falling items */
 }
 
 .item {
@@ -274,6 +275,7 @@ body {
     height: 4rem; /* restore original falling object size */
     object-fit: contain; /* Ensures the image fills the box while maintaining aspect ratio */
     border-radius: 0.1rem;
+    z-index: 1;
 }
 
 #score {
