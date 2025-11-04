@@ -7,10 +7,24 @@
   <script src="game.js" defer></script>
 </head>
 <body>
-  <div id="game">
-    <img id="bin" class="bin" src="" alt="Bin">
-  </div>
-  <div id="score">Score: 0</div>
+  <div id="layout-container">
+    <!-- Left Section: Level Info -->
+    <div id="level-panel">
+      <div id="current-level"><h1>Līmenis: 1</h1></div>
+      <img id="level-icon" src="" alt="Level Icon">
+    </div>
 
+    <!-- Center Section: Game Area -->
+    <div id="game-container">
+      <div id="game">
+        <img id="bin" class="bin" src="" alt="Bin">
+      </div>
+    </div>
+
+    <!-- Right Section: Score Info -->
+    <div id="score-panel">
+      <div id="score"><h1>Score: 0</h1></div>
+    </div>
+  </div>
 </body>
 </html>

@@ -34,8 +34,15 @@ if (window.location.pathname.endsWith("spele.html")) {
 
     const level = levels[levelIndex];
     bin.src = level.binImg;
-    scoreDisplay.textContent = `Score: ${score} — Līmenis ${levelIndex + 1}: ${level.name}`;
+    document.getElementById('current-level').textContent = `Līmenis: ${levelIndex + 1}`;
+    document.getElementById('score').textContent = `Score: ${score}`;
     showMessage(`Sākas ${levelIndex + 1}. līmenis — ${level.name}!`);
+
+    // Update the level icon to the first trash symbol in the level
+    const firstTrashImage = trashTypes.find(t => t.type === level.target)?.images[0];
+    if (firstTrashImage) {
+      document.getElementById('level-icon').src = firstTrashImage;
+    }
 
     items.forEach(item => item.remove());
     items = [];
@@ -50,10 +57,8 @@ if (window.location.pathname.endsWith("spele.html")) {
       levelTime--;
       if (levelTime <= 0) {
         clearInterval(levelTimer);
-        // stop spawning new items
         clearInterval(spawnInterval);
 
-        // check every 200ms if all items are gone
         const waitForItems = setInterval(() => {
           if (items.length === 0) {
             clearInterval(waitForItems);
@@ -126,11 +131,11 @@ if (window.location.pathname.endsWith("spele.html")) {
 
       const itemRect = item.getBoundingClientRect();
 
-      const margin = 15; // reduced collision margin for more precise hits
+      const margin = 15; // Reduced collision margin for more precise hits
       const binRect = {
         top: bin.getBoundingClientRect().top + margin,
         right: bin.getBoundingClientRect().right - margin,
-        bottom: bin.getBoundingClientRect().bottom - 150, // no margin at bottom
+        bottom: bin.getBoundingClientRect().top + 5, // Only the top 5px of the bin is active
         left: bin.getBoundingClientRect().left + margin
       };
 
@@ -147,70 +152,70 @@ if (window.location.pathname.endsWith("spele.html")) {
           score -= 3;
         }
 
-        scoreDisplay.textContent = `Score: ${score} — Līmenis ${currentLevel + 1}: ${levels[currentLevel].name}`;
+        scoreDisplay.textContent = `Score: ${score}`;
         item.remove();
         items.splice(i, 1);
       }
 
       // Remove if fallen past the bottom of game area with extra buffer
-      if (itemRect.top > gameRect.bottom + 50) { // increased buffer to 50px
+      if (itemRect.top > gameRect.bottom + 50) { // Increased buffer to 50px
         item.remove();
         items.splice(i, 1);
       }
     });
   }
 
-// --- BIN MOVEMENT ---
-let lastMoveTime = 0; // Tracks the last time the bin moved
-const moveCooldown = 100; // Minimum time (in ms) between movements
+  // --- BIN MOVEMENT ---
+  let lastMoveTime = 0; // Tracks the last time the bin moved
+  const moveCooldown = 100; // Minimum time (in ms) between movements
 
-document.addEventListener('keydown', e => {
-  const currentTime = Date.now();
+  document.addEventListener('keydown', e => {
+    const currentTime = Date.now();
 
-  // Only allow movement if enough time has passed since the last move
-  if (currentTime - lastMoveTime < moveCooldown) {
-    return;
-  }
-  lastMoveTime = currentTime;
-
-  if (e.key === 'ArrowLeft') {
-    const gw = game.clientWidth || 400;
-    const bw = bin.offsetWidth || 80;
-    const maxLeft = Math.max(0, gw - bw);
-    const step = Math.max(30, Math.round(gw / 8)); // relative step, min 30px
-
-    if (left <= 0) { // wrap to right
-      bin.style.transition = 'none';
-      left = maxLeft;
-      bin.style.left = left + 'px';
-      setTimeout(() => {
-        bin.style.transition = 'left 0.2s ease';
-      }, 0);
-    } else { // normal movement
-      left = Math.max(0, left - step);
-      bin.style.left = left + 'px';
+    // Only allow movement if enough time has passed since the last move
+    if (currentTime - lastMoveTime < moveCooldown) {
+      return;
     }
-  }
+    lastMoveTime = currentTime;
 
-  if (e.key === 'ArrowRight') {
-    const gw = game.clientWidth || 400;
-    const bw = bin.offsetWidth || 80;
-    const maxLeft = Math.max(0, gw - bw);
-    const step = Math.max(30, Math.round(gw / 8));
+    if (e.key === 'ArrowLeft') {
+      const gw = game.clientWidth || 400;
+      const bw = bin.offsetWidth || 80;
+      const maxLeft = Math.max(0, gw - bw);
+      const step = Math.max(30, Math.round(gw / 8)); // relative step, min 30px
 
-    if (left >= maxLeft) {
-      bin.style.transition = 'none';
-      left = 0;
-      bin.style.left = left + 'px';
-      setTimeout(() => {
-        bin.style.transition = 'left 0.2s ease';
-      }, 0);
-    } else {
-      left = Math.min(maxLeft, left + step);
-      bin.style.left = left + 'px';
+      if (left <= 0) { // wrap to right
+        bin.style.transition = 'none';
+        left = maxLeft;
+        bin.style.left = left + 'px';
+        setTimeout(() => {
+          bin.style.transition = 'left 0.2s ease';
+        }, 0);
+      } else { // normal movement
+        left = Math.max(0, left - step);
+        bin.style.left = left + 'px';
+      }
     }
-  }
-});
+
+    if (e.key === 'ArrowRight') {
+      const gw = game.clientWidth || 400;
+      const bw = bin.offsetWidth || 80;
+      const maxLeft = Math.max(0, gw - bw);
+      const step = Math.max(30, Math.round(gw / 8));
+
+      if (left >= maxLeft) {
+        bin.style.transition = 'none';
+        left = 0;
+        bin.style.left = left + 'px';
+        setTimeout(() => {
+          bin.style.transition = 'left 0.2s ease';
+        }, 0);
+      } else {
+        left = Math.min(maxLeft, left + step);
+        bin.style.left = left + 'px';
+      }
+    }
+  });
 
   // --- HELPER FUNCTIONS ---
   function showMessage(text) {
