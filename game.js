@@ -130,7 +130,7 @@ if (window.location.pathname.endsWith("spele.html")) {
       const binRect = {
         top: bin.getBoundingClientRect().top + margin,
         right: bin.getBoundingClientRect().right - margin,
-        bottom: bin.getBoundingClientRect().bottom - 130, // no margin at bottom
+        bottom: bin.getBoundingClientRect().bottom - 150, // no margin at bottom
         left: bin.getBoundingClientRect().left + margin
       };
 
