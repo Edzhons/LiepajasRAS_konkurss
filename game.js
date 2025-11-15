@@ -156,6 +156,7 @@ if (window.location.pathname.endsWith("spele.html")) {
           score += 1;
         } else {
           score -= 3;
+          if (score < 0) score = 0; // Ensure score does not go below 0
         }
 
         scoreDisplay.textContent = `Score: ${score}`;
