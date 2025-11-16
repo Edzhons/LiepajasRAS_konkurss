@@ -345,65 +345,134 @@ a { color: #143D8C; }
   transform: scale(1.05);
 }
 
-/* NICKNAME OVERLAY (on load) */
+/* ---------------------------- */
+/* BEAUTIFUL NICKNAME OVERLAY  */
+/* ---------------------------- */
+
+/* Fullscreen cover */
 #nickname-overlay {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(15px);
-  background: rgba(163, 217, 165, 0.85);
-  z-index: 9000;
+
+  /* smooth fade to match the green game background */
+  background: linear-gradient(
+    180deg,
+    #cb6ce6 0%,      /* transition from purple (index) */
+    #a3d9a5 70%      /* into game green */
+  );
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  z-index: 9998;
+
+  animation: overlayFade 0.6s ease forwards;
 }
 
+/* Card */
 #nickname-card {
-  background: #ffffff;
-  width: 420px;
-  max-width: 90%;
-  padding: 35px 30px;
-  border-radius: 20px;
+  background: rgba(255,255,255,0.92);
+  width: 460px;
+  max-width: 95%;
+  padding: 40px 35px;
+  border-radius: 28px;
+
   text-align: center;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  animation: fadeInUp 0.35s ease-out;
+  gap: 22px;
+
+  animation: fadeInUp 0.55s ease forwards;
+  backdrop-filter: blur(8px);
 }
 
+/* Title */
 #nickname-card h1 {
   margin: 0;
-  font-size: 32px;
-  font-weight: 800;
+  font-size: 40px;
+  font-weight: 900;
   color: #143D8C;
+  letter-spacing: -1px;
 }
 
+/* Subtitle */
 #nickname-card p {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
   color: #333;
 }
 
+/* Icon above text */
+#nickname-card::before {
+  content: "👋";
+  font-size: 60px;
+  margin-bottom: -10px;
+  animation: waveAnim 1.4s infinite ease-in-out;
+}
+
+/* Input box */
 #nickname-input {
-  padding: 10px 12px;
-  font-size: 18px;
-  border-radius: 10px;
-  border: 2px solid #143D8C;
+  padding: 14px 16px;
+  font-size: 20px;
+  border-radius: 14px;
+  border: 3px solid #143D8C;
   outline: none;
   width: 100%;
+  transition: all .25s ease;
 }
 
 #nickname-input:focus {
   border-color: #54B848;
+  box-shadow: 0 0 10px rgba(84,184,72,.4);
 }
 
-/* reuse .menu-btn styling already defined for buttons */
+/* Button */
+#nickname-ok {
+  padding: 16px 20px;
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #54B848, #3c8d34);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+#nickname-ok:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(84,184,72,.45);
+}
+
+/* ---------------------------- */
+/* Animations                   */
+/* ---------------------------- */
+
+@keyframes overlayFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes waveAnim {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
 
 @keyframes fadeInUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* ---------------------------- */
