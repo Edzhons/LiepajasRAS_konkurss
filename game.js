@@ -25,18 +25,28 @@ if (window.location.pathname.endsWith("spele.html")) {
     { type: "paper", images: ["images/paper1.png", "images/paper2.png"] }
   ];
 
-function saveScore(score) {
-  let board = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+function saveScore(score, nickname = localStorage.getItem("currentNickname") || "Spēlētājs") {
+  let board = JSON.parse(localStorage.getItem("leaderboard") || "{}");
 
-  board.push(score);
-  board.sort((a, b) => b - a); // highest first
-  board = board.slice(0, 5);   // keep top 5
+  const name = nickname;
+
+  // If player not in board OR new score is higher → save it
+  if (!board[name] || score > board[name]) {
+    board[name] = score;
+  }
 
   localStorage.setItem("leaderboard", JSON.stringify(board));
 }
 
 function getLeaderboard() {
-  return JSON.parse(localStorage.getItem("leaderboard") || "[]");
+  const board = JSON.parse(localStorage.getItem("leaderboard") || "{}");
+
+  // Convert to array → sort → return top 5
+  const sorted = Object.entries(board)
+    .sort((a, b) => b[1] - a[1]) // high → low
+    .slice(0, 5);
+
+  return sorted;
 }
 
   // --- LEVEL SETUP ---
@@ -122,13 +132,13 @@ function getLeaderboard() {
 
     saveScore(score); // ⬅️ NEW
 
-    const leaderboard = getLeaderboard(); // ⬅️ NEW
+    const leaderboard = getLeaderboard();
 
-    let text = `Spēle beigusies! Tavs punktu skaits: ${score}\n\n`;
+    let text = `Spēle beigusies! ${nickname}, tavs punktu skaits: ${score}\n\n`;
     text += "🔝 Labākie rezultāti:\n";
 
-    leaderboard.forEach((entry, i) => {
-      text += `${i + 1}. ${entry} punkti\n`;
+    leaderboard.forEach(([name, pts], i) => {
+      text += `${i + 1}. ${name} — ${pts} punkti\n`;
     });
 
     showMessage(text.replace(/\n/g, "<br>")); // show with line breaks
@@ -271,7 +281,11 @@ function getLeaderboard() {
 
 
   // --- START GAME ---
-  // ensure bin is centered based on initial game size
+  
+  nickname = prompt("Ievadi savu segvārdu:");
+  if (!nickname || nickname.trim() === "") nickname = "Spēlētājs";
+  localStorage.setItem("currentNickname", nickname);
+
   setBinInitial();
   startLevel(currentLevel);
 }
