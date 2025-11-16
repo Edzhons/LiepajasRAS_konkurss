@@ -25,6 +25,20 @@ if (window.location.pathname.endsWith("spele.html")) {
     { type: "paper", images: ["images/paper1.png", "images/paper2.png"] }
   ];
 
+function saveScore(score) {
+  let board = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+
+  board.push(score);
+  board.sort((a, b) => b - a); // highest first
+  board = board.slice(0, 5);   // keep top 5
+
+  localStorage.setItem("leaderboard", JSON.stringify(board));
+}
+
+function getLeaderboard() {
+  return JSON.parse(localStorage.getItem("leaderboard") || "[]");
+}
+
   // --- LEVEL SETUP ---
   function startLevel(levelIndex) {
     if (levelIndex >= levels.length) {
@@ -105,7 +119,19 @@ if (window.location.pathname.endsWith("spele.html")) {
 
   function endGame() {
     clearIntervals();
-    showMessage(`Spēle beigusies! Tavs punktu skaits: ${score}`);
+
+    saveScore(score); // ⬅️ NEW
+
+    const leaderboard = getLeaderboard(); // ⬅️ NEW
+
+    let text = `Spēle beigusies! Tavs punktu skaits: ${score}\n\n`;
+    text += "🔝 Labākie rezultāti:\n";
+
+    leaderboard.forEach((entry, i) => {
+      text += `${i + 1}. ${entry} punkti\n`;
+    });
+
+    showMessage(text.replace(/\n/g, "<br>")); // show with line breaks
   }
 
   // --- GAME MECHANICS ---
@@ -227,7 +253,7 @@ if (window.location.pathname.endsWith("spele.html")) {
   // --- HELPER FUNCTIONS ---
   function showMessage(text) {
     const msg = document.createElement('div');
-    msg.textContent = text;
+    msg.innerHTML = text; // ⬅️ change
     msg.style.position = 'absolute';
     msg.style.top = '45%';
     msg.style.left = '50%';
@@ -238,9 +264,11 @@ if (window.location.pathname.endsWith("spele.html")) {
     msg.style.borderRadius = '10px';
     msg.style.fontSize = '20px';
     msg.style.zIndex = '999';
+    msg.style.textAlign = 'center';
     game.appendChild(msg);
-    setTimeout(() => msg.remove(), 3000);
+    setTimeout(() => msg.remove(), 5000);
   }
+
 
   // --- START GAME ---
   // ensure bin is centered based on initial game size
