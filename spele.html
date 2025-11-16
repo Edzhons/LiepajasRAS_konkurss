@@ -14,6 +14,11 @@
       <img id="level-icon" src="" alt="Level Icon">
     </div>
 
+    <div id="score-to-beat" class="side-box">
+      <h2>Rezultāts, kas Tev jāpārspēj:</h2>
+      <p id="best-player-score">Nav datu</p>
+    </div>
+
     <!-- Center Section: Game Area -->
     <div id="game-container">
       <div id="game">
@@ -26,6 +31,22 @@
       <div id="score"><h1>Score: 0</h1></div>
       <div id="timer"><h2>Laiks: 20s</h2></div>
     </div>
+
+    <div id="leaderboard" class="side-box">
+      <h2>Top 5</h2>
+      <ol id="leaderboard-list"></ol>
+    </div>
+
   </div>
+
+  <div id="game-over-screen">
+    <div id="game-over-card">
+      <h1>Rezultāti</h1>
+      <p id="final-score"></p>
+      <button onclick="location.href='index.html'" class="menu-btn">Sākumlapa</button>
+      <button onclick="location.reload()" class="menu-btn">Mēģināt vēlreiz</button>
+    </div>
+  </div>
+
 </body>
 </html>

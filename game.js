@@ -49,6 +49,32 @@ function getLeaderboard() {
   return sorted;
 }
 
+// --- SCORE TO BEAT BOX (left panel) ---
+function updateScoreToBeat() {
+  const nickname = localStorage.getItem("currentNickname") || "Spēlētājs";
+
+  let board = JSON.parse(localStorage.getItem("leaderboard") || "{}");
+  const best = board[nickname] ? board[nickname] : 0;
+
+  const el = document.getElementById("best-player-score");
+  if (el) el.textContent = best + " punkti";
+}
+
+// --- LEADERBOARD BOX (right panel) ---
+function updateLeaderboardBox() {
+  const lb = getLeaderboard();
+  const list = document.getElementById("leaderboard-list");
+  if (!list) return;
+
+  list.innerHTML = "";
+
+  lb.forEach(([name, score]) => {
+    const li = document.createElement("li");
+    li.textContent = `${name}: ${score}`;
+    list.appendChild(li);
+  });
+}
+
   // --- LEVEL SETUP ---
   function startLevel(levelIndex) {
     if (levelIndex >= levels.length) {
@@ -130,18 +156,16 @@ function getLeaderboard() {
   function endGame() {
     clearIntervals();
 
-    saveScore(score); // ⬅️ NEW
+    saveScore(score);
+    updateLeaderboardBox();
 
-    const leaderboard = getLeaderboard();
+    // Update the final score on the overlay
+    const fs = document.getElementById("final-score");
+    if (fs) fs.textContent = "Tavs rezultāts: " + score;
 
-    let text = `Spēle beigusies! ${nickname}, tavs punktu skaits: ${score}\n\n`;
-    text += "🔝 Labākie rezultāti:\n";
-
-    leaderboard.forEach(([name, pts], i) => {
-      text += `${i + 1}. ${name} — ${pts} punkti\n`;
-    });
-
-    showMessage(text.replace(/\n/g, "<br>")); // show with line breaks
+    // Show overlay
+    const over = document.getElementById("game-over-screen");
+    if (over) over.style.display = "flex";
   }
 
   // --- GAME MECHANICS ---
@@ -196,6 +220,7 @@ function getLeaderboard() {
         }
 
         scoreDisplay.textContent = `Score: ${score}`;
+        updateLeaderboardBox();
         item.remove();
         items.splice(i, 1);
       }
@@ -285,6 +310,9 @@ function getLeaderboard() {
   nickname = prompt("Ievadi savu segvārdu:");
   if (!nickname || nickname.trim() === "") nickname = "Spēlētājs";
   localStorage.setItem("currentNickname", nickname);
+
+  updateScoreToBeat();
+  updateLeaderboardBox();
 
   setBinInitial();
   startLevel(currentLevel);
