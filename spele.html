@@ -6,35 +6,34 @@
   <link rel="stylesheet" href="style.css">
   <script src="game.js" defer></script>
 </head>
-<body>
+<body class="game-page">
   <div id="layout-container">
-    <!-- Left Section: Level Info -->
+
+    <!-- Left Section -->
     <div id="level-panel">
       <div id="current-level"><h1>Līmenis: 1</h1></div>
       <img id="level-icon" src="" alt="Level Icon">
+      <div id="score-to-beat" class="side-box">
+        <h2>Rezultāts, kas Tev jāpārspēj:</h2>
+        <p id="best-player-score">Nav datu</p>
+      </div>
     </div>
 
-    <div id="score-to-beat" class="side-box">
-      <h2>Rezultāts, kas Tev jāpārspēj:</h2>
-      <p id="best-player-score">Nav datu</p>
-    </div>
-
-    <!-- Center Section: Game Area -->
+    <!-- Center (Game) -->
     <div id="game-container">
       <div id="game">
         <img id="bin" class="bin" src="" alt="Bin">
       </div>
     </div>
 
-    <!-- Right Section: Score Info -->
+    <!-- Right Section -->
     <div id="score-panel">
       <div id="score"><h1>Score: 0</h1></div>
       <div id="timer"><h2>Laiks: 20s</h2></div>
-    </div>
-
-    <div id="leaderboard" class="side-box">
-      <h2>Top 5</h2>
-      <ol id="leaderboard-list"></ol>
+      <div id="leaderboard" class="side-box">
+        <h2>Top 5</h2>
+        <ol id="leaderboard-list"></ol>
+      </div>
     </div>
 
   </div>

@@ -1,21 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-*{
+
+* {
     text-decoration: none;
     transition: all .3s;
+    box-sizing: border-box;
 }
+
+/* ------------------------- */
+/* DEFAULT body styling      */
+/* (Landing page only)       */
+/* ------------------------- */
 body {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     background-color: #cb6ce6;
-    position: relative;
     overflow: hidden;
     min-height: 100vh;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+/* Override ONLY on game page */
+body.game-page {
+    background: #a3d9a5 !important;
+    overflow: hidden;
+    display: block;
+}
+
+/* ---------------------------- */
+/*    Floating Trash Icons      */
+/* ---------------------------- */
 .trash-bg-1,
 .trash-bg-2,
 .trash-bg-3,
@@ -33,6 +50,8 @@ body {
     z-index: -1;
     opacity: 0;
     visibility: hidden;
+    top: -50px;
+    left: -100px;
 }
 
 .trash-bg-1 i,
@@ -49,158 +68,56 @@ body {
     display: block;
 }
 
-body::before {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow1 20s linear infinite;
-}
+/* animations */
+.trash-bg-1 { animation: moveTrashRow3 22s linear infinite 4s; }
+.trash-bg-2 { animation: moveTrashRow1 28s linear infinite 6s; }
+.trash-bg-3 { animation: moveTrashRow2 24s linear infinite 8s; }
+.trash-bg-4 { animation: moveTrashRow3 26s linear infinite 10s; }
+.trash-bg-5 { animation: moveTrashRow1 23s linear infinite 12s; }
+.trash-bg-6 { animation: moveTrashRow2 27s linear infinite 14s; }
+.trash-bg-7 { animation: moveTrashRow3 25s linear infinite 16s; }
+.trash-bg-8 { animation: moveTrashRow1 23s linear infinite 18s; }
+.trash-bg-9 { animation: moveTrashRow2 26s linear infinite 20s; }
+.trash-bg-10 { animation: moveTrashRow3 24s linear infinite 22s; }
+.trash-bg-11 { animation: moveTrashRow1 27s linear infinite 24s; }
 
-body::after {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow2 25s linear infinite 2s;
-}
-
-.trash-bg-1 {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow3 22s linear infinite 4s;
-}
-
-.trash-bg-2 {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow1 28s linear infinite 6s;
-}
-
-.trash-bg-3 {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow2 24s linear infinite 8s;
-}
-
-.trash-bg-4 {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow3 26s linear infinite 10s;
-}
-
-.trash-bg-5 {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow1 23s linear infinite 12s;
-}
-
-.trash-bg-6 {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow2 27s linear infinite 14s;
-}
-
-.trash-bg-7 {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow3 25s linear infinite 16s;
-}
-
-.trash-bg-8 {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow1 23s linear infinite 18s;
-}
-
-.trash-bg-9 {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow2 26s linear infinite 20s;
-}
-
-.trash-bg-10 {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow3 24s linear infinite 22s;
-}
-
-.trash-bg-11 {
-    top: -50px;
-    left: -100px;
-    animation: moveTrashRow1 27s linear infinite 24s;
-}
-
+/* ---------------------------- */
+/* Keyframes                   */
+/* ---------------------------- */
 @keyframes moveTrashRow1 {
-    0% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translate(-100px, 0) rotate(0deg);
-    }
-    10% {
-        opacity: 1;
-        visibility: visible;
-    }
-    90% {
-        opacity: 1;
-        visibility: visible;
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translate(calc(100vw + 100px), 20vh) rotate(360deg);
-    }
+    0% { opacity: 0; visibility: hidden; transform: translate(-100px,0) rotate(0deg); }
+    10%, 90% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 100px),20vh) rotate(360deg); }
 }
 
 @keyframes moveTrashRow2 {
-    0% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translate(-100px, 0) rotate(0deg);
-    }
-    10% {
-        opacity: 1;
-        visibility: visible;
-    }
-    90% {
-        opacity: 1;
-        visibility: visible;
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translate(calc(100vw + 100px), 50vh) rotate(-360deg);
-    }
+    0% { opacity: 0; visibility: hidden; transform: translate(-100px,0) rotate(0deg); }
+    10%, 90% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 100px),50vh) rotate(-360deg); }
 }
 
 @keyframes moveTrashRow3 {
-    0% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translate(-100px, 0) rotate(0deg);
-    }
-    10% {
-        opacity: 1;
-        visibility: visible;
-    }
-    90% {
-        opacity: 1;
-        visibility: visible;
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translate(calc(100vw + 100px), 80vh) rotate(720deg);
-    }
+    0% { opacity: 0; visibility: hidden; transform: translate(-100px,0) rotate(0deg); }
+    10%, 90% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 100px),80vh) rotate(720deg); }
 }
+
+/* ---------------------------- */
+/* Landing Page Logo + Button   */
+/* ---------------------------- */
 img {
     width: 750px;
-    margin-top: 0;
     margin-bottom: 5rem;
 }
+
 h1 {
     font-size: 120px;
     font-weight: 700;
     color: #fff;
     margin: 10px 0;
 }
-.startpoga{
+
+.startpoga {
     display: inline-block;
     padding: 25px 50px;
     border: 6px solid #fff;
@@ -209,71 +126,37 @@ h1 {
     font-size: 32px;
     font-weight: 700;
     border-radius: 35px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     cursor: pointer;
     margin-top: 10rem;
 }
+
 .startpoga:hover {
-    background-color: #fff;
     border-color: #54B848;
     color: #fff;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    transform: scale(115%) ;
-}
-a{
-    color: #143D8C;
+    transform: scale(1.15);
 }
 
-/* SPELITES CSS, TO KAS AUGSAA KADS LUDZU SALABOJIET, neaiztiekot sito :SOBBB: */
-body {
-    margin: 0;
-    background: #a3d9a5;
-    overflow: hidden;
-    font-family: sans-serif;
-}
+a { color: #143D8C; }
 
-/* Scale the bin and items relative to the game container so they remain usable
-     on small screens and look larger on tablets/phones. Percentages are relative
-     to the #game container because items are positioned inside it. */
-.bin {
-    position: absolute;
-    bottom: 2.5%;
-    left: 45%; /* visually roughly centered; JS will still control left via inline style */
-    width: 18%;
-    max-width: 120px;
-    min-width: 48px;
-    height: auto;
-    object-fit: contain;
-    z-index: 2; /* ensure bin is always above falling items */
-}
+/* ---------------------------- */
+/* *** GAME PAGE CSS ***       */
+/* ---------------------------- */
 
-.item {
-    position: absolute;
-    top: 0;
-    width: 4rem; /* restore original falling object size */
-    height: 4rem; /* restore original falling object size */
-    object-fit: contain; /* Ensures the image fills the box while maintaining aspect ratio */
-    border-radius: 0.1rem;
-    z-index: 1;
-}
-
-/* Layout Container */
 #layout-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 100vh;
-  padding: 0 5%; /* Add some padding on the sides */
-  box-sizing: border-box;
+  padding: 0 5%;
 }
 
-/* Left Section: Level Panel */
+/* Level panel */
 #level-panel {
-  flex: 1; /* Take up equal space */
-  flex-direction: column;
+  flex: 1;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -281,22 +164,21 @@ body {
   font-size: 34px;
   font-weight: bold;
   color: #143D8C;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255,255,255,.8);
   padding: 10px 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #level-icon {
-  width: 15rem; /* Set a fixed width */
-  height: 15rem; /* Maintain aspect ratio */
-  margin-top: 10rem; /* Add some spacing below the level title */
+  width: 15rem;
+  height: 15rem;
+  margin-top: 10rem;
   object-fit: contain;
 }
 
-/* Center Section: Game Container */
+/* Game container */
 #game-container {
-  flex: 2; /* Take up more space for the game area */
+  flex: 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -309,15 +191,34 @@ body {
   background: #e0f7e0;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0,0,0,.2);
 }
 
-/* Right Section: Score Panel */
+.bin {
+  position: absolute;
+  bottom: 2.5%;
+  left: 45%;
+  width: 18%;
+  max-width: 120px;
+  min-width: 48px;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.item {
+  position: absolute;
+  top: 0;
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* Score section */
 #score-panel {
-  flex: 1; /* Take up equal space */
-  flex-direction: column;
+  flex: 1;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -325,32 +226,30 @@ body {
   font-size: 34px;
   font-weight: bold;
   color: #54B848;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255,255,255,.8);
   padding: 10px 20px;
-  margin-bottom: 3rem;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
 }
 
 #timer {
   font-size: 24px;
   font-weight: bold;
-  color: #FF5733; /* A distinct color for the timer */
-  margin-top: 10px; /* Add spacing between the score and the timer */
-  background: rgba(255, 255, 255, 0.8);
+  color: #FF5733;
+  background: rgba(255,255,255,.8);
   padding: 10px 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
 }
 
 .side-box {
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,.85);
   padding: 15px 20px;
   margin-top: 2rem;
   border-radius: 10px;
   width: 80%;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,.1);
 }
 
 .side-box h2 {
@@ -359,67 +258,93 @@ body {
   color: #143D8C;
 }
 
-/* --- Game Over Overlay --- */
+/* GAME OVER OVERLAY          */
 #game-over-screen {
-  display: none;
+  display: none;               /* stays hidden */
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.55);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  pointer-events: none;        /* disabled until active */
+}
+
+/* When activated by JS */
+#game-over-screen.active {
+  display: flex;               /* shown only at game over */
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  pointer-events: auto;
 }
 
 #game-over-card {
   background: white;
-  padding: 40px;
+  width: 420px;
+  max-width: 90%;
+  padding: 35px 30px;
   border-radius: 20px;
-  width: 400px;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  animation: fadeInUp 0.35s ease-out;
 }
 
-.menu-btn {
-  display: block;
-  width: 80%;
-  margin: 15px auto 0;
-  padding: 15px 25px;
+#game-over-card h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  color: #143D8C;
+}
+
+#final-score {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin: 5px 0 15px 0;
+}
+
+#game-over-card .menu-btn {
+  width: 100%;
+  padding: 14px 25px;
   font-size: 20px;
+  font-weight: 600;
   border-radius: 12px;
-  border: none;
   background: #54B848;
   color: white;
+  border: none;
   cursor: pointer;
 }
 
-.menu-btn:hover {
-  transform: scale(1.05);
+#game-over-card .menu-btn:hover {
   background: #3c8d34;
+  transform: scale(1.05);
 }
 
-/* Tablet breakpoint: give a bit more breathing room and larger controls */
+@keyframes fadeInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ---------------------------- */
+/* RESPONSIVE                  */
+/* ---------------------------- */
 @media (max-width: 900px) and (min-width: 421px) {
-    #game {
-        width: min(94vw, 520px);
-        max-width: 520px;
-    }
+    #game { width: min(94vw, 520px); }
     .bin { width: 16%; }
     .item { width: 4rem; height: 4rem; }
-    #score { font-size: 18px; }
 }
 
-/* Small phone tweaks (override earlier rules if needed) */
 @media (max-width: 420px) {
-    #game { width: 96vw; margin: 12px auto; }
-    .bin { width: 20%; bottom: 3%; }
-    .item { width: 4rem; height: 4rem; }
-    #score { font-size: 16px; }
-}
+    img { width: 280px; }
+    h1 { font-size: 40px; }
+    .startpoga { padding: 14px 28px; font-size: 18px; }
 
-/* Responsive: iPhone 12 Pro and similar narrow screens */
-@media (max-width: 420px) {
-    /* make the decorative trash icons much smaller and less intrusive */
     .trash-bg-1,
     .trash-bg-2,
     .trash-bg-3,
@@ -432,48 +357,5 @@ body {
     .trash-bg-10,
     .trash-bg-11 {
         font-size: 48px;
-        opacity: 0; /* keep hidden until animation makes them visible */
-    }
-
-    /* ensure the actual <i> icon inherits the smaller size */
-    .trash-bg-1 i,
-    .trash-bg-2 i,
-    .trash-bg-3 i,
-    .trash-bg-4 i,
-    .trash-bg-5 i,
-    .trash-bg-6 i,
-    .trash-bg-7 i,
-    .trash-bg-8 i,
-    .trash-bg-9 i,
-    .trash-bg-10 i,
-    .trash-bg-11 i {
-        font-size: inherit;
-    }
-
-    /* scale down the logo, heading and button for mobile */
-    img { width: 280px; margin-top: 0; }
-    h1 { font-size: 40px; margin: 12px 0; }
-    .startpoga { padding: 14px 28px; font-size: 18px; border-radius: 22px; }
-
-    /* Reduce the distance the icons travel so they look natural on small screens */
-    @keyframes moveTrashRow1 {
-        0% { opacity: 0; visibility: hidden; transform: translate(-100px, 0) rotate(0deg); }
-        10% { opacity: 1; visibility: visible; }
-        90% { opacity: 1; visibility: visible; }
-        100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 60px), 18vh) rotate(360deg); }
-    }
-
-    @keyframes moveTrashRow2 {
-        0% { opacity: 0; visibility: hidden; transform: translate(-100px, 0) rotate(0deg); }
-        10% { opacity: 1; visibility: visible; }
-        90% { opacity: 1; visibility: visible; }
-        100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 60px), 45vh) rotate(-360deg); }
-    }
-
-    @keyframes moveTrashRow3 {
-        0% { opacity: 0; visibility: hidden; transform: translate(-100px, 0) rotate(0deg); }
-        10% { opacity: 1; visibility: visible; }
-        90% { opacity: 1; visibility: visible; }
-        100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 60px), 72vh) rotate(720deg); }
     }
 }

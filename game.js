@@ -165,7 +165,7 @@ function updateLeaderboardBox() {
 
     // Show overlay
     const over = document.getElementById("game-over-screen");
-    if (over) over.style.display = "flex";
+    if (over) over.classList.add("active");
   }
 
   // --- GAME MECHANICS ---
