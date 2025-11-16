@@ -13,10 +13,7 @@
     <div id="level-panel">
       <div id="current-level"><h1>Līmenis: 1</h1></div>
       <img id="level-icon" src="" alt="Level Icon">
-      <div id="score-to-beat" class="side-box">
-        <h2>Rezultāts, kas Tev jāpārspēj:</h2>
-        <p id="best-player-score">Nav datu</p>
-      </div>
+      <div id="player-name-left"></div>
     </div>
 
     <!-- Center (Game) -->
@@ -28,14 +25,24 @@
 
     <!-- Right Section -->
     <div id="score-panel">
-      <div id="score"><h1>Score: 0</h1></div>
+      <div id="score"><h1>Punkti: 0</h1></div>
       <div id="timer"><h2>Laiks: 20s</h2></div>
       <div id="leaderboard" class="side-box">
-        <h2>Top 5</h2>
-        <ol id="leaderboard-list"></ol>
+          <h2>Top 5</h2>
+          <ol id="leaderboard-list"></ol>
       </div>
     </div>
 
+  </div>
+
+  <!-- Nickname overlay (shown on page load) -->
+  <div id="nickname-overlay">
+    <div id="nickname-card">
+      <h1>Sveiks!</h1>
+      <p>Ievadi savu segvārdu, lai sāktu spēli.</p>
+      <input type="text" id="nickname-input" placeholder="Spēlētājs">
+      <button id="nickname-ok" class="menu-btn">Sākt spēli</button>
+    </div>
   </div>
 
   <div id="game-over-screen">

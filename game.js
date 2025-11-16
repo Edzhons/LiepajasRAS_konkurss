@@ -11,8 +11,8 @@ if (window.location.pathname.endsWith("spele.html")) {
   let levelTime = 20; // seconds per level
   let levelTimer;
   let spawnInterval, updateInterval;
+  let nickname = null;
 
-  // Levels
   const levels = [
     { target: "glass", binImg: "images/bin_glass.png", name: "Stikls" },
     { target: "plastic", binImg: "images/bin_plastic.png", name: "Plastmasa" },
@@ -49,28 +49,25 @@ function getLeaderboard() {
   return sorted;
 }
 
-// --- SCORE TO BEAT BOX (left panel) ---
-function updateScoreToBeat() {
-  const nickname = localStorage.getItem("currentNickname") || "Spēlētājs";
-
-  let board = JSON.parse(localStorage.getItem("leaderboard") || "{}");
-  const best = board[nickname] ? board[nickname] : 0;
-
-  const el = document.getElementById("best-player-score");
-  if (el) el.textContent = best + " punkti";
-}
-
 // --- LEADERBOARD BOX (right panel) ---
 function updateLeaderboardBox() {
   const lb = getLeaderboard();
   const list = document.getElementById("leaderboard-list");
   if (!list) return;
 
+  const nickname = localStorage.getItem("currentNickname");
+
   list.innerHTML = "";
 
   lb.forEach(([name, score]) => {
     const li = document.createElement("li");
     li.textContent = `${name}: ${score}`;
+
+    // Highlight if this is the current player
+    if (name === nickname) {
+      li.classList.add("highlight");
+    }
+
     list.appendChild(li);
   });
 }
@@ -85,7 +82,7 @@ function updateLeaderboardBox() {
     const level = levels[levelIndex];
     bin.src = level.binImg;
     document.getElementById('current-level').textContent = `Līmenis: ${levelIndex + 1}`;
-    document.getElementById('score').textContent = `Score: ${score}`;
+    document.getElementById('score').textContent = `Punkti: ${score}`;
     showMessage(`Sākas ${levelIndex + 1}. līmenis — ${level.name}!`);
 
     // Update the level icon to the first trash symbol in the level
@@ -219,7 +216,7 @@ function updateLeaderboardBox() {
           if (score < 0) score = 0; // Ensure score does not go below 0
         }
 
-        scoreDisplay.textContent = `Score: ${score}`;
+        scoreDisplay.textContent = `Punkti: ${score}`;
         updateLeaderboardBox();
         item.remove();
         items.splice(i, 1);
@@ -305,15 +302,60 @@ function updateLeaderboardBox() {
   }
 
 
-  // --- START GAME ---
-  
-  nickname = prompt("Ievadi savu segvārdu:");
-  if (!nickname || nickname.trim() === "") nickname = "Spēlētājs";
-  localStorage.setItem("currentNickname", nickname);
+    // --- START GAME ---
+  document.addEventListener("DOMContentLoaded", function () {
+    const overlay = document.getElementById("nickname-overlay");
+    const card    = document.getElementById("nickname-card");
+    const input   = document.getElementById("nickname-input");
+    const okBtn   = document.getElementById("nickname-ok");
 
-  updateScoreToBeat();
-  updateLeaderboardBox();
+    // Failsafe: if overlay missing, just start with default
+    if (!overlay || !card || !input || !okBtn) {
+      nickname = localStorage.getItem("currentNickname") || "Spēlētājs";
+      localStorage.setItem("currentNickname", nickname);
 
-  setBinInitial();
-  startLevel(currentLevel);
+      const nameEl = document.getElementById("player-name-left");
+      if (nameEl) nameEl.textContent = nickname;
+
+      updateLeaderboardBox();
+      setBinInitial();
+      startLevel(currentLevel);
+      return;
+    }
+
+    // Pre-fill with last nickname if exists
+    const stored = localStorage.getItem("currentNickname");
+    if (stored) {
+      input.value = stored;
+    }
+
+    function startGameWithNickname() {
+      let name = input.value.trim();
+      if (!name) name = "Spēlētājs";
+
+      nickname = name;
+      localStorage.setItem("currentNickname", nickname);
+
+      const nameEl = document.getElementById("player-name-left");
+      if (nameEl) nameEl.textContent = nickname;
+
+      updateLeaderboardBox();
+      setBinInitial();
+      startLevel(currentLevel);
+
+      overlay.style.display = "none";
+    }
+
+    okBtn.addEventListener("click", startGameWithNickname);
+
+    // Press Enter to confirm
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        startGameWithNickname();
+      }
+    });
+
+    // Focus input on load
+    input.focus();
+  });
 }
