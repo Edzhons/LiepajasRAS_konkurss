@@ -1,4 +1,4 @@
-// Only run this if we are on spele.html
+
 if (window.location.pathname.endsWith("spele.html")) {
   const game = document.getElementById('game');
   const bin = document.getElementById('bin');

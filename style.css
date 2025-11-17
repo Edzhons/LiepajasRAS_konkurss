@@ -13,7 +13,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
-    background-color: #cb6ce6;
+    background-image: radial-gradient(#54B848,#084f0a );
     overflow: hidden;
     min-height: 100vh;
     margin: 0;
@@ -25,7 +25,10 @@ body {
 
 /* Override ONLY on game page */
 body.game-page {
-    background: #a3d9a5 !important;
+    background: linear-gradient(
+    180deg,
+    #085511 0%,      /* transition from purple (index) */
+    #54B848 70%) !important;
     overflow: hidden;
     display: block;
 }
@@ -359,8 +362,8 @@ a { color: #143D8C; }
   /* smooth fade to match the green game background */
   background: linear-gradient(
     180deg,
-    #cb6ce6 0%,      /* transition from purple (index) */
-    #a3d9a5 70%      /* into game green */
+    #085511 0%,      /* transition from purple (index) */
+    #54B848 70%      /* into game green */
   );
 
   display: flex;
