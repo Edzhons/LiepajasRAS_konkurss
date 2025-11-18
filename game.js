@@ -35,7 +35,7 @@
       { target: "biodegradable", binImg: "images/bin_biodegradable.png", name: "Bioloģiski noārdāmie atkritumi",
         explanation: "Šajā konteinerā drīkst mest pārtikas atliekas, dārza un zaļos atkritumus, vecus augus, kafijas biezumus. Nekādā gadījumā nemest plastmasas iepakojumus vai šķidrumus!"
       },
-      { target: "electronics", binImg: "images/bin_electronic.png", name: "sadzīves bīstamie atkritumi",
+      { target: "electronics", binImg: "images/bin_electronics.png", name: "sadzīves bīstamie atkritumi",
         explanation: "Bīstamajiem atkritumiem ir nepieciešama speciāla nodošana. Tie ir baterijas, nolietotas elektroiekārtas, spuldzes, termometri un elektroniskās cigaretes. Tiem ir speciāli savākšanas punkti."
       },
       { target: "nonrecyclable", binImg: "images/bin_nonrecyclable.png", name: "Nešķirojamie sadzīves atkritumi",
@@ -47,8 +47,8 @@
       { type: "lightweight", images: ["images/lightweight1.png", "images/lightweight2.png"] },
       { type: "glass", images: ["images/glass1.png", "images/glass2.png"] },
       { type: "biodegradable", images: ["images/bio1.png", "images/bio2.png"] },
-      { type: "electronic", images: ["images/electronic.png", "images/electronic2.png"] },
-      { type: "neskirojamie", images: ["images/neskirojamie1.png", "images/neskirojamie2.png"] }
+      { type: "electronics", images: ["images/electronics1.png", "images/electronics2.png"] },
+      { type: "nonrecyclable", images: ["images/nonrecyclable1.png", "images/nonrecyclable2.png"] }
     ];
 
   function saveScore(score, nickname = localStorage.getItem("currentNickname") || "Spēlētājs") {
@@ -246,6 +246,9 @@
     }
 
     function endGame() {
+      const summaryOverlay = document.getElementById("level-summary-overlay");
+      if (summaryOverlay) summaryOverlay.classList.remove("active");
+
       clearIntervals();
 
       saveScore(score);
@@ -258,6 +261,8 @@
       // Show overlay
       const over = document.getElementById("game-over-screen");
       if (over) over.classList.add("active");
+      
+      document.getElementById("level-summary-overlay").classList.remove("active");
     }
 
     // --- GAME MECHANICS ---
