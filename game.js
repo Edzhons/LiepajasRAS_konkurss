@@ -35,7 +35,7 @@
       { target: "biodegradable", binImg: "images/bin_biodegradable.png", name: "Bioloģiski noārdāmie atkritumi",
         explanation: "Šajā konteinerā drīkst mest pārtikas atliekas, dārza un zaļos atkritumus, vecus augus, kafijas biezumus. Nekādā gadījumā nemest plastmasas iepakojumus vai šķidrumus!"
       },
-      { target: "hazardous", binImg: "images/bin_hazardous.png", name: "sadzīves bīstamie atkritumi",
+      { target: "electronics", binImg: "images/bin_electronic.png", name: "sadzīves bīstamie atkritumi",
         explanation: "Bīstamajiem atkritumiem ir nepieciešama speciāla nodošana. Tie ir baterijas, nolietotas elektroiekārtas, spuldzes, termometri un elektroniskās cigaretes. Tiem ir speciāli savākšanas punkti."
       },
       { target: "nonrecyclable", binImg: "images/bin_nonrecyclable.png", name: "Nešķirojamie sadzīves atkritumi",
@@ -46,9 +46,9 @@
     const trashTypes = [
       { type: "lightweight", images: ["images/lightweight1.png", "images/lightweight2.png"] },
       { type: "glass", images: ["images/glass1.png", "images/glass2.png"] },
-      { type: "biodegradable", images: ["images/biodegradable1.png", "images/biodegradable2.png"] },
-      { type: "hazardous", images: ["images/hazardous1.png", "images/hazardous2.png"] },
-      { type: "nonrecyclable", images: ["images/nonrecyclable1.png", "images/nonrecyclable2.png"] }
+      { type: "biodegradable", images: ["images/bio1.png", "images/bio2.png"] },
+      { type: "electronic", images: ["images/electronic.png", "images/electronic2.png"] },
+      { type: "neskirojamie", images: ["images/neskirojamie1.png", "images/neskirojamie2.png"] }
     ];
 
   function saveScore(score, nickname = localStorage.getItem("currentNickname") || "Spēlētājs") {
