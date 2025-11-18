@@ -173,9 +173,9 @@ a { color: #143D8C; }
 }
 
 .level-icon {
-  width: 8rem;
-  height: 8rem;
-  margin-top: 10rem;
+  width: 13rem;
+  height: 13rem;
+  margin-top: 5rem;
   object-fit: contain;
 }
 
@@ -230,46 +230,61 @@ a { color: #143D8C; }
 
 /* Score section */
 #score-panel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#score {
-  font-size: 34px;
-  font-weight: bold;
-  color: #54B848;
-  background: rgba(255,255,255,.8);
-  padding: 10px 20px;
-  border-radius: 8px;
-  margin-bottom: 3rem;
-}
-
-#timer {
-  font-size: 24px;
-  font-weight: bold;
-  color: #FF5733;
-  background: rgba(255,255,255,.8);
-  padding: 10px 20px;
-  border-radius: 8px;
-  margin-top: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .side-box {
-  background: rgba(255,255,255,.85);
-  padding: 15px 20px;
-  margin-top: 2rem;
-  border-radius: 10px;
-  width: 80%;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    background: rgba(255,255,255,.95); /* Mazliet gaišāks, lai izceltos */
+    padding: 15px 20px;
+    margin-top: 2rem;
+    border-radius: 12px;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,.15); /* Akcentēta ēna */
+    border: 3px solid #143D8C; /* Zila apmale */
 }
 
-.side-box h2 {
-  margin: 0 0 .5rem;
-  font-size: 22px;
-  color: #143D8C;
+/* JAUNĀ KASTE Punktiem un Laikam */
+#score-timer-box {
+    margin-bottom: 3rem; /* Nodrošināt atstarpi virs līderu saraksta */
+    padding: 20px;
+}
+
+#score-timer-box h1, 
+#score-timer-box h2 {
+    margin: 5px 0;
+    line-height: 1.2;
+    /* Atceļam globālo h1 font-size/color, lai nestilotu to kā Landing lapas H1 */
+    font-size: unset; /* Atgriež noklusējuma izmēru vai mantoto */
+    color: inherit; /* Mantos vecākelementa krāsu */
+}
+
+/* TIEŠAIS STILS uz H1 iekšpusē #score, izmantojot pareizās vērtības */
+#score h1 {
+    font-size: 28px; 
+    font-weight: 900; /* Vēl treknāks, lai izceltos */
+    color: #54B848; /* Zaļš */
+    margin: 0; /* Noņemam lieko atstarpi no H1 */
+    padding: 0;
+}
+
+#score {
+    /* Pārveidots no atsevišķas kastes uz rindu */
+    /* Šie stili tagad kontrolē kasti, nevis fontu. */
+    border-bottom: 2px dashed #ddd; /* Atsevišķā līnija starp punktiem un laiku */
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+#timer {
+    /* Pārveidots no atsevišķas kastes uz rindu */
+    font-size: 22px;
+    font-weight: 700;
+    color: #FF5733; /* Sarkans/Oranžs */
+    padding-top: 10px;
 }
 
 .highlight {
@@ -278,6 +293,121 @@ a { color: #143D8C; }
     background: rgba(255, 200, 200, 0.6);
     padding: 4px 8px;
     border-radius: 8px;
+}
+
+/* ---------------------------- */
+/* LĪMEŅA KOPSAVILKUMA OVERLAY    */
+/* ---------------------------- */
+#level-summary-overlay {
+    display: none;        /* sākotnēji paslēpts */
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75); /* tumšāks fons */
+    z-index: 9999;
+    pointer-events: none;
+}
+
+#level-summary-overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+}
+
+#level-summary-card {
+    background: white;
+    width: 550px;
+    max-width: 90%;
+    padding: 40px 35px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    animation: fadeInUp 0.4s ease-out;
+}
+
+#level-summary-card h1 {
+    margin: 0 0 10px;
+    font-size: 38px;
+    font-weight: 900;
+    color: #54B848; /* zaļš */
+}
+
+#level-summary-card h2 {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #143D8C;
+}
+
+#summary-score-info {
+    font-size: 18px;
+    color: #333;
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+#educational-content {
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fffcfc;
+}
+
+#educational-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 0;
+    color: #555;
+}
+
+#summary-target-name {
+    color: #54B848;
+    font-weight: bold;
+}
+
+#summary-example-icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #ccc;
+}
+
+.summary-example-icon {
+    width: 60px; 
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 2px solid #54B848;
+}
+
+#next-level-btn {
+    /* Izmanto to pašu stilu, kas menu-btn */
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 22px;
+    font-weight: 700;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #143D8C, #0a2e6f); /* citas krāsas, lai atšķirtos no EndGame */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+#next-level-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(20,61,140,.45);
 }
 
 /* GAME OVER OVERLAY          */

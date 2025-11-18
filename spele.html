@@ -26,13 +26,19 @@
 
       <!-- Right Section -->
       <div id="score-panel">
-        <div id="score"><h1>Punkti: 0</h1></div>
-        <div id="timer"><h2>Laiks: 20s</h2></div>
+        <div id="score-timer-box" class="side-box">
+            <div id="score">
+                <h1>🏆 Punkti: 0</h1>
+            </div>
+            <div id="timer">
+                <h2>⏱️ Laiks: 20s</h2>
+            </div>
+        </div>
         <div id="leaderboard" class="side-box">
             <h2>Top 5</h2>
             <ol id="leaderboard-list"></ol>
         </div>
-      </div>
+    </div>
 
     </div>
 
@@ -55,5 +61,18 @@
       </div>
     </div>
 
-  </body>
-  </html>
+    <div id="level-summary-overlay">
+      <div id="level-summary-card">
+        <h1 id="summary-level-title">Līmeņa kopsavilkums</h1>
+        <p id="summary-score-info"></p>
+        <div id="educational-content">
+          <h2>Kā pareizi šķirot: <span id="summary-target-name"></span></h2>
+          <p id="summary-explanation"></p>
+          <div id="summary-example-icons">
+            </div>
+        </div>
+        <button id="next-level-btn" class="menu-btn">Turpināt uz nākamo līmeni</button>
+      </div>
+    </div>
+ </body>
+</html>
