@@ -1,58 +1,59 @@
-<!DOCTYPE html>
-<html lang="lv">
-<head>
-  <meta charset="UTF-8">
-  <title>Atkritumu Šķirošanas Spēle</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="game.js" defer></script>
-</head>
-<body class="game-page">
-  <div id="layout-container">
+  <!DOCTYPE html>
+  <html lang="lv">
+  <head>
+    <meta charset="UTF-8">
+    <title>Atkritumu Šķirošanas Spēle</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="game.js" defer></script>
+  </head>
+  <body class="game-page">
+    <div id="layout-container">
 
-    <!-- Left Section -->
-    <div id="level-panel">
-      <div id="current-level"><h1>Līmenis: 1</h1></div>
-      <img id="level-icon" src="" alt="Level Icon">
-      <div id="player-name-left"></div>
+      <!-- Left Section -->
+      <div id="level-panel">
+        <div id="current-level"><h1>Līmenis: 1</h1></div>
+        <img class="level-icon" id="level-icon" src="" alt="Level Icon">
+        <img class="level-icon" id="level-icon2" src="" alt="Level Icon2">
+        <div id="player-name-left"></div>
+      </div>
+
+      <!-- Center (Game) -->
+      <div id="game-container">
+        <div id="game">
+          <img id="bin" class="bin" src="" alt="Bin">
+        </div>
+      </div>
+
+      <!-- Right Section -->
+      <div id="score-panel">
+        <div id="score"><h1>Punkti: 0</h1></div>
+        <div id="timer"><h2>Laiks: 20s</h2></div>
+        <div id="leaderboard" class="side-box">
+            <h2>Top 5</h2>
+            <ol id="leaderboard-list"></ol>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Center (Game) -->
-    <div id="game-container">
-      <div id="game">
-        <img id="bin" class="bin" src="" alt="Bin">
+    <!-- Nickname overlay (shown on page load) -->
+    <div id="nickname-overlay">
+      <div id="nickname-card">
+        <h1>Sveiks!</h1>
+        <p>Ievadi savu segvārdu, lai sāktu spēli.</p>
+        <input type="text" id="nickname-input" placeholder="Spēlētājs">
+        <button id="nickname-ok" class="menu-btn">Sākt spēli</button>
       </div>
     </div>
 
-    <!-- Right Section -->
-    <div id="score-panel">
-      <div id="score"><h1>Punkti: 0</h1></div>
-      <div id="timer"><h2>Laiks: 20s</h2></div>
-      <div id="leaderboard" class="side-box">
-          <h2>Top 5</h2>
-          <ol id="leaderboard-list"></ol>
+    <div id="game-over-screen">
+      <div id="game-over-card">
+        <h1>Rezultāti</h1>
+        <p id="final-score"></p>
+        <button onclick="location.href='index.html'" class="menu-btn">Sākumlapa</button>
+        <button onclick="location.reload()" class="menu-btn">Mēģināt vēlreiz</button>
       </div>
     </div>
 
-  </div>
-
-  <!-- Nickname overlay (shown on page load) -->
-  <div id="nickname-overlay">
-    <div id="nickname-card">
-      <h1>Sveiks!</h1>
-      <p>Ievadi savu segvārdu, lai sāktu spēli.</p>
-      <input type="text" id="nickname-input" placeholder="Spēlētājs">
-      <button id="nickname-ok" class="menu-btn">Sākt spēli</button>
-    </div>
-  </div>
-
-  <div id="game-over-screen">
-    <div id="game-over-card">
-      <h1>Rezultāti</h1>
-      <p id="final-score"></p>
-      <button onclick="location.href='index.html'" class="menu-btn">Sākumlapa</button>
-      <button onclick="location.reload()" class="menu-btn">Mēģināt vēlreiz</button>
-    </div>
-  </div>
-
-</body>
-</html>
+  </body>
+  </html>

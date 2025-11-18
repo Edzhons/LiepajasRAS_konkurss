@@ -172,9 +172,9 @@ a { color: #143D8C; }
   border-radius: 8px;
 }
 
-#level-icon {
-  width: 15rem;
-  height: 15rem;
+.level-icon {
+  width: 8rem;
+  height: 8rem;
   margin-top: 10rem;
   object-fit: contain;
 }
