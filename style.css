@@ -8,24 +8,24 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
   background-image: radial-gradient(#54B848, #084f0a);
-  overflow: hidden;
-  min-height: 100vh;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  min-height: 100vh;
+
+  /* REMOVE flexbox */
+  display: block;
+
+  /* Let content flow normally */
+  overflow-x: hidden;
+  text-align: center;
 }
 
 body.game-page {
-  background: linear-gradient(180deg,
-      #085511 0%,
-      #54B848 70%) !important;
+  background: linear-gradient(180deg, #085511 0%, #54B848 70%) !important;
   overflow: hidden;
-  display: block;
+  display: block;   /* KEEP THIS */
 }
+
 
 /*miskastes ikonas fonā*/
 .trash-bg-1,
@@ -172,7 +172,8 @@ img {
   margin-bottom: 5rem;
 }
 
-h1 {
+/* Big H1 only on index.html */
+body:not(.game-page) h1 {
   font-size: 120px;
   font-weight: 700;
   color: #fff;
@@ -232,7 +233,7 @@ a {
 .level-icon {
   width: 11rem;
   height: 11rem;
-  margin-top: 4rem;
+  margin-top: 1rem;
   object-fit: contain;
 }
 
@@ -240,7 +241,7 @@ a {
   font-size: 36px;
   font-weight: 800;
   color: #143D8C;
-  margin-top: 2rem;
+  margin-top: 1rem;
   background: rgba(255, 255, 255, 0.85);
   padding: 15px 25px;
   border-radius: 12px;
@@ -316,8 +317,9 @@ a {
 }
 
 /* JAUNĀ KASTE Punktiem un Laikam */
-#score-timer-box {
+#score-timer-box{
   margin-bottom: 3rem;
+  margin-right: 3rem;
   padding: 20px;
 }
 
@@ -679,6 +681,7 @@ a {
 @media (max-width: 900px) and (min-width: 421px) {
   #game {
     width: min(94vw, 560px);
+    height: 75vh;
   }
 
   #layout-container {
@@ -728,7 +731,7 @@ a {
 
 
   #game {
-    height: 86vh;
+    height: 75vh;
   }
 
   .item {
@@ -758,6 +761,29 @@ a {
   display: none;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 600px) {
+  #level-panel, #score-panel {
+      flex-direction: row;
+      justify-content: center;
+      width: auto;
+      height: auto;
+      padding: 0;
+      gap: 0.5rem;
+  }
+
+  .level-icon {
+      width: 4rem;
+      height: 4rem;
+      margin-top: 1rem;
+  }
+
+  #player-name-left {
+      font-size: 22px;
+      margin-top: 1rem;
+      padding: 8px 16px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -792,7 +818,44 @@ a {
     pointer-events: none;
   }
 
+  #game {
+    height: 75vh;
+  }
+
+  .level-icon{
+    width: 1rem;
+    height: 1rem;
+  }
+
 }
+
+@media (max-width: 1200px) {
+
+  #game {
+    width: min(94vw, 600px);
+    height: 75vh;
+  }
+
+  .level-icon{
+    width: 9rem;
+    height: 9rem;
+  }
+
+}
+
+@media (max-width: 1060px) {
+
+  #game {
+    width: min(74vw, 400px);
+    height: 75vh;
+  }
+
+  .level-icon{
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
 
 .mobile-btn {
   background: linear-gradient(180deg, #54B848, #3c8d34);
