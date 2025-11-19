@@ -1,78 +1,96 @@
-  <!DOCTYPE html>
-  <html lang="lv">
-  <head>
-    <meta charset="UTF-8">
-    <title>Atkritumu Šķirošanas Spēle</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="game.js" defer></script>
-  </head>
-  <body class="game-page">
-    <div id="layout-container">
+<!DOCTYPE html>
+<html lang="lv">
 
-      <!-- Left Section -->
-      <div id="level-panel">
-        <div id="current-level"><h1>Līmenis: 1</h1></div>
-        <img class="level-icon" id="level-icon" src="" alt="Level Icon">
-        <img class="level-icon" id="level-icon2" src="" alt="Level Icon2">
-        <div id="player-name-left"></div>
+<head>
+  <meta charset="UTF-8">
+  <title>Atkritumu Šķirošanas Spēle</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+
+<body class="game-page">
+  <div id="layout-container">
+
+    <!-- Left Section -->
+    <div id="level-panel">
+      <div id="current-level">
+        <h1>Līmenis: 1</h1>
       </div>
+      <img class="level-icon" id="level-icon" src="" alt="Level Icon">
+      <img class="level-icon" id="level-icon2" src="" alt="Level Icon2">
+      <div id="player-name-left"></div>
+    </div>
 
-      <!-- Center (Game) -->
-      <div id="game-container">
-        <div id="game">
-          <img id="bin" class="bin" src="" alt="Bin">
+    <!-- Center (Game) -->
+    <div id="game-container">
+      <div id="game">
+        <img id="bin" class="bin" src="" alt="Bin">
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div id="score-panel">
+      <div id="score-timer-box" class="side-box">
+        <div id="score">
+          <h1>🏆 Punkti: 0</h1>
+        </div>
+        <div id="timer">
+          <h2>⏱️ Laiks: 20s</h2>
         </div>
       </div>
-
-      <!-- Right Section -->
-      <div id="score-panel">
-        <div id="score-timer-box" class="side-box">
-            <div id="score">
-                <h1>🏆 Punkti: 0</h1>
-            </div>
-            <div id="timer">
-                <h2>⏱️ Laiks: 20s</h2>
-            </div>
-        </div>
-        <div id="leaderboard" class="side-box">
-            <h2>Top 5</h2>
-            <ol id="leaderboard-list"></ol>
-        </div>
-    </div>
-
-    </div>
-
-    <!-- Nickname overlay (shown on page load) -->
-    <div id="nickname-overlay">
-      <div id="nickname-card">
-        <h1>Sveiks!</h1>
-        <p>Ievadi savu segvārdu, lai sāktu spēli.</p>
-        <input type="text" id="nickname-input" placeholder="Spēlētājs">
-        <button id="nickname-ok" class="menu-btn">Sākt spēli</button>
+      <div id="leaderboard" class="side-box">
+        <h2>Top 5</h2>
+        <ol id="leaderboard-list"></ol>
       </div>
     </div>
 
-    <div id="game-over-screen">
-      <div id="game-over-card">
-        <h1>Rezultāti</h1>
-        <p id="final-score"></p>
-        <button onclick="location.href='index.html'" class="menu-btn">Sākumlapa</button>
-        <button onclick="location.reload()" class="menu-btn">Mēģināt vēlreiz</button>
-      </div>
-    </div>
+  </div>
 
-    <div id="level-summary-overlay">
-      <div id="level-summary-card">
-        <h1 id="summary-level-title">Līmeņa kopsavilkums</h1>
-        <p id="summary-score-info"></p>
-        <div id="educational-content">
-          <h2>Kā pareizi šķirot: <span id="summary-target-name"></span></h2>
-          <p id="summary-explanation"></p>
-          <div id="summary-example-icons">
-            </div>
-        </div>
-        <button id="next-level-btn" class="menu-btn">Turpināt uz nākamo līmeni</button>
-      </div>
+  <div id="nickname-overlay">
+    <div id="nickname-card">
+      <h1>Sveiks!</h1>
+      <p>Ievadi savu segvārdu, lai sāktu spēli.</p>
+      <input type="text" id="nickname-input" placeholder="Spēlētājs">
+      <button id="nickname-ok" class="menu-btn">Sākt spēli</button>
     </div>
- </body>
+  </div>
+
+  <div id="game-over-screen">
+    <div id="game-over-card">
+      <h1>Rezultāti</h1>
+      <p id="final-score"></p>
+      <button onclick="location.href='index.html'" class="menu-btn">Sākumlapa</button>
+      <button onclick="location.reload()" class="menu-btn">Mēģināt vēlreiz</button>
+    </div>
+  </div>
+
+  <div id="level-summary-overlay">
+    <div id="level-summary-card">
+      <h1 id="summary-level-title">Līmeņa kopsavilkums</h1>
+      <p id="summary-score-info"></p>
+      <div id="educational-content">
+        <h2>Kā pareizi šķirot: <span id="summary-target-name"></span></h2>
+        <p id="summary-explanation"></p>
+        <div id="summary-example-icons">
+        </div>
+      </div>
+      <button id="next-level-btn" class="menu-btn">Turpināt uz nākamo līmeni</button>
+    </div>
+  </div>
+
+  <div id="mobile-controls" aria-hidden="true">
+    <button id="mobile-left" class="mobile-btn" aria-label="Move left">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <button id="mobile-right" class="mobile-btn" aria-label="Move right">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M9 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+      </svg>
+    </button>
+  </div>
+</body>
+
 </html>

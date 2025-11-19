@@ -1,41 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-    text-decoration: none;
-    transition: all .3s;
-    box-sizing: border-box;
+  text-decoration: none;
+  transition: all .3s;
+  box-sizing: border-box;
 }
 
-/* ------------------------- */
-/* DEFAULT body styling      */
-/* (Landing page only)       */
-/* ------------------------- */
 body {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    background-image: radial-gradient(#54B848,#084f0a );
-    overflow: hidden;
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  background-image: radial-gradient(#54B848, #084f0a);
+  overflow: hidden;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Override ONLY on game page */
 body.game-page {
-    background: linear-gradient(
-    180deg,
-    #085511 0%,      /* transition from purple (index) */
-    #54B848 70%) !important;
-    overflow: hidden;
-    display: block;
+  background: linear-gradient(180deg,
+      #085511 0%,
+      #54B848 70%) !important;
+  overflow: hidden;
+  display: block;
 }
 
-/* ---------------------------- */
-/*    Floating Trash Icons      */
-/* ---------------------------- */
+/*miskastes ikonas fonā*/
 .trash-bg-1,
 .trash-bg-2,
 .trash-bg-3,
@@ -47,14 +39,14 @@ body.game-page {
 .trash-bg-9,
 .trash-bg-10,
 .trash-bg-11 {
-    position: fixed;
-    font-size: 200px;
-    color: #53b8487d;
-    z-index: -1;
-    opacity: 0;
-    visibility: hidden;
-    top: -50px;
-    left: -100px;
+  position: fixed;
+  font-size: 200px;
+  color: #53b8487d;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  top: -50px;
+  left: -100px;
 }
 
 .trash-bg-1 i,
@@ -68,83 +60,149 @@ body.game-page {
 .trash-bg-9 i,
 .trash-bg-10 i,
 .trash-bg-11 i {
-    display: block;
+  display: block;
 }
 
-/* animations */
-.trash-bg-1 { animation: moveTrashRow3 22s linear infinite 4s; }
-.trash-bg-2 { animation: moveTrashRow1 28s linear infinite 6s; }
-.trash-bg-3 { animation: moveTrashRow2 24s linear infinite 8s; }
-.trash-bg-4 { animation: moveTrashRow3 26s linear infinite 10s; }
-.trash-bg-5 { animation: moveTrashRow1 23s linear infinite 12s; }
-.trash-bg-6 { animation: moveTrashRow2 27s linear infinite 14s; }
-.trash-bg-7 { animation: moveTrashRow3 25s linear infinite 16s; }
-.trash-bg-8 { animation: moveTrashRow1 23s linear infinite 18s; }
-.trash-bg-9 { animation: moveTrashRow2 26s linear infinite 20s; }
-.trash-bg-10 { animation: moveTrashRow3 24s linear infinite 22s; }
-.trash-bg-11 { animation: moveTrashRow1 27s linear infinite 24s; }
+.trash-bg-1 {
+  animation: moveTrashRow3 22s linear infinite 4s;
+}
 
-/* ---------------------------- */
-/* Keyframes                   */
-/* ---------------------------- */
+.trash-bg-2 {
+  animation: moveTrashRow1 28s linear infinite 6s;
+}
+
+.trash-bg-3 {
+  animation: moveTrashRow2 24s linear infinite 8s;
+}
+
+.trash-bg-4 {
+  animation: moveTrashRow3 26s linear infinite 10s;
+}
+
+.trash-bg-5 {
+  animation: moveTrashRow1 23s linear infinite 12s;
+}
+
+.trash-bg-6 {
+  animation: moveTrashRow2 27s linear infinite 14s;
+}
+
+.trash-bg-7 {
+  animation: moveTrashRow3 25s linear infinite 16s;
+}
+
+.trash-bg-8 {
+  animation: moveTrashRow1 23s linear infinite 18s;
+}
+
+.trash-bg-9 {
+  animation: moveTrashRow2 26s linear infinite 20s;
+}
+
+.trash-bg-10 {
+  animation: moveTrashRow3 24s linear infinite 22s;
+}
+
+.trash-bg-11 {
+  animation: moveTrashRow1 27s linear infinite 24s;
+}
+
 @keyframes moveTrashRow1 {
-    0% { opacity: 0; visibility: hidden; transform: translate(-100px,0) rotate(0deg); }
-    10%, 90% { opacity: 1; visibility: visible; }
-    100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 100px),20vh) rotate(360deg); }
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-100px, 0) rotate(0deg);
+  }
+
+  10%,
+  90% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(calc(100vw + 100px), 20vh) rotate(360deg);
+  }
 }
 
 @keyframes moveTrashRow2 {
-    0% { opacity: 0; visibility: hidden; transform: translate(-100px,0) rotate(0deg); }
-    10%, 90% { opacity: 1; visibility: visible; }
-    100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 100px),50vh) rotate(-360deg); }
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-100px, 0) rotate(0deg);
+  }
+
+  10%,
+  90% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(calc(100vw + 100px), 50vh) rotate(-360deg);
+  }
 }
 
 @keyframes moveTrashRow3 {
-    0% { opacity: 0; visibility: hidden; transform: translate(-100px,0) rotate(0deg); }
-    10%, 90% { opacity: 1; visibility: visible; }
-    100% { opacity: 0; visibility: hidden; transform: translate(calc(100vw + 100px),80vh) rotate(720deg); }
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-100px, 0) rotate(0deg);
+  }
+
+  10%,
+  90% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(calc(100vw + 100px), 80vh) rotate(720deg);
+  }
 }
 
-/* ---------------------------- */
-/* Landing Page Logo + Button   */
-/* ---------------------------- */
 img {
-    width: 750px;
-    margin-bottom: 5rem;
+  width: 750px;
+  margin-bottom: 5rem;
 }
 
 h1 {
-    font-size: 120px;
-    font-weight: 700;
-    color: #fff;
-    margin: 10px 0;
+  font-size: 120px;
+  font-weight: 700;
+  color: #fff;
+  margin: 10px 0;
 }
 
 .startpoga {
-    display: inline-block;
-    padding: 25px 50px;
-    border: 6px solid #fff;
-    background-color: #fff;
-    color: #cb6ce6;
-    font-size: 32px;
-    font-weight: 700;
-    border-radius: 35px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    cursor: pointer;
-    margin-top: 10rem;
+  display: inline-block;
+  padding: 25px 50px;
+  border: 6px solid #fff;
+  background-color: #fff;
+  color: #cb6ce6;
+  font-size: 32px;
+  font-weight: 700;
+  border-radius: 35px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  margin-top: 10rem;
 }
 
 .startpoga:hover {
-    border-color: #54B848;
-    color: #fff;
-    transform: scale(1.15);
+  border-color: #54B848;
+  color: #fff;
+  transform: scale(1.15);
 }
 
-a { color: #143D8C; }
+a {
+  color: #143D8C;
+}
 
-/* ---------------------------- */
-/* *** GAME PAGE CSS ***       */
-/* ---------------------------- */
 
 #layout-container {
   display: flex;
@@ -155,7 +213,6 @@ a { color: #143D8C; }
   padding: 0 5%;
 }
 
-/* Level panel */
 #level-panel {
   flex: 1;
   display: flex;
@@ -167,7 +224,7 @@ a { color: #143D8C; }
   font-size: 34px;
   font-weight: bold;
   color: #143D8C;
-  background: rgba(255,255,255,.8);
+  background: rgba(255, 255, 255, .8);
   padding: 10px 20px;
   border-radius: 8px;
 }
@@ -180,17 +237,16 @@ a { color: #143D8C; }
 }
 
 #player-name-left {
-    font-size: 36px;
-    font-weight: 800;
-    color: #143D8C;
-    margin-top: 2rem;
-    background: rgba(255,255,255,0.85);
-    padding: 15px 25px;
-    border-radius: 12px;
-    text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  color: #143D8C;
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 15px 25px;
+  border-radius: 12px;
+  text-align: center;
 }
 
-/* Game container */
 #game-container {
   flex: 2;
   display: flex;
@@ -200,21 +256,21 @@ a { color: #143D8C; }
 
 #game {
   position: relative;
-  width: 600px;
-  height: 100vh;
+  width: min(94vw, 720px);
+  height: 92vh;
   background: #e0f7e0;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0,0,0,.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .2);
 }
 
 .bin {
+  /* miskastes izmērs*/
   position: absolute;
   bottom: 2.5%;
   left: 45%;
-  width: 18%;
-  max-width: 120px;
-  min-width: 48px;
+  width: 160px;
+  height: 160px;
   object-fit: contain;
   z-index: 2;
 }
@@ -228,203 +284,209 @@ a { color: #143D8C; }
   z-index: 1;
 }
 
-/* Score section */
+/* score tabula */
 #score-panel {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .side-box {
-    background: rgba(255,255,255,.95); /* Mazliet gaišāks, lai izceltos */
-    padding: 15px 20px;
-    margin-top: 2rem;
-    border-radius: 12px;
-    width: 80%;
-    text-align: center;
-    box-shadow: 0 6px 15px rgba(0,0,0,.15); /* Akcentēta ēna */
-    border: 3px solid #143D8C; /* Zila apmale */
+  background: rgba(255, 255, 255, .98);
+  padding: 16px 18px;
+  margin: 1rem auto;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+  border: 2px solid #143D8C;
+}
+
+.side-box h2,
+.side-box h3,
+.side-box p {
+  margin: 0;
 }
 
 /* JAUNĀ KASTE Punktiem un Laikam */
 #score-timer-box {
-    margin-bottom: 3rem; /* Nodrošināt atstarpi virs līderu saraksta */
-    padding: 20px;
+  margin-bottom: 3rem;
+  padding: 20px;
 }
 
-#score-timer-box h1, 
+#score-timer-box h1,
 #score-timer-box h2 {
-    margin: 5px 0;
-    line-height: 1.2;
-    /* Atceļam globālo h1 font-size/color, lai nestilotu to kā Landing lapas H1 */
-    font-size: unset; /* Atgriež noklusējuma izmēru vai mantoto */
-    color: inherit; /* Mantos vecākelementa krāsu */
+  margin: 5px 0;
+  line-height: 1.2;
+  font-size: unset;
+  color: inherit;
 }
 
-/* TIEŠAIS STILS uz H1 iekšpusē #score, izmantojot pareizās vērtības */
+
 #score h1 {
-    font-size: 28px; 
-    font-weight: 900; /* Vēl treknāks, lai izceltos */
-    color: #54B848; /* Zaļš */
-    margin: 0; /* Noņemam lieko atstarpi no H1 */
-    padding: 0;
+  font-size: 28px;
+  font-weight: 900;
+  color: #54B848;
+  margin: 0;
+  padding: 0;
 }
 
 #score {
-    /* Pārveidots no atsevišķas kastes uz rindu */
-    /* Šie stili tagad kontrolē kasti, nevis fontu. */
-    border-bottom: 2px dashed #ddd; /* Atsevišķā līnija starp punktiem un laiku */
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+  border-bottom: 2px dashed #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #timer {
-    /* Pārveidots no atsevišķas kastes uz rindu */
-    font-size: 22px;
-    font-weight: 700;
-    color: #FF5733; /* Sarkans/Oranžs */
-    padding-top: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #FF5733;
+  padding-top: 10px;
 }
 
 .highlight {
-    color: #FF5733;
-    font-weight: 900;
-    background: rgba(255, 200, 200, 0.6);
-    padding: 4px 8px;
-    border-radius: 8px;
+  color: #FF5733;
+  font-weight: 900;
+  background: rgba(255, 200, 200, 0.6);
+  padding: 4px 8px;
+  border-radius: 8px;
 }
 
-/* ---------------------------- */
-/* LĪMEŅA KOPSAVILKUMA OVERLAY    */
-/* ---------------------------- */
 #level-summary-overlay {
-    display: none;        /* sākotnēji paslēpts */
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.75); /* tumšāks fons */
-    z-index: 9999;
-    pointer-events: none;
-}
-
-#level-summary-overlay.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: auto;
-}
-
-#level-summary-card {
-    background: white;
-    width: 550px;
-    max-width: 90%;
-    padding: 40px 35px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    animation: fadeInUp 0.4s ease-out;
-}
-
-#level-summary-card h1 {
-    margin: 0 0 10px;
-    font-size: 38px;
-    font-weight: 900;
-    color: #54B848; /* zaļš */
-}
-
-#level-summary-card h2 {
-    margin-top: 20px;
-    font-size: 24px;
-    color: #143D8C;
-}
-
-#summary-score-info {
-    font-size: 18px;
-    color: #333;
-    background: #f0f0f0;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-#educational-content {
-    text-align: left;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    background: #fffcfc;
-}
-
-#educational-content p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 10px 0;
-    color: #555;
-}
-
-#summary-target-name {
-    color: #54B848;
-    font-weight: bold;
-}
-
-#summary-example-icons {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 15px;
-    padding-top: 10px;
-    border-top: 1px dashed #ccc;
-}
-
-.summary-example-icon {
-    width: 60px; 
-    height: 60px;
-    object-fit: contain;
-    border-radius: 8px;
-    border: 2px solid #54B848;
-}
-
-#next-level-btn {
-    /* Izmanto to pašu stilu, kas menu-btn */
-    width: 100%;
-    padding: 16px 20px;
-    font-size: 22px;
-    font-weight: 700;
-    border-radius: 14px;
-    background: linear-gradient(90deg, #143D8C, #0a2e6f); /* citas krāsas, lai atšķirtos no EndGame */
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: all .25s ease;
-}
-
-#next-level-btn:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 12px rgba(20,61,140,.45);
-}
-
-/* GAME OVER OVERLAY          */
-#game-over-screen {
-  display: none;               /* stays hidden */
+  display: none;
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.75);
   z-index: 9999;
-  pointer-events: none;        /* disabled until active */
+  pointer-events: none;
 }
 
-/* When activated by JS */
+#level-summary-overlay.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}
+
+#level-summary-card {
+  background: white;
+  width: 550px;
+  max-width: 90%;
+  padding: 40px 35px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  animation: fadeInUp 0.4s ease-out;
+}
+
+#level-summary-card h1 {
+  margin: 0 0 10px;
+  font-size: 38px;
+  font-weight: 900;
+  color: #54B848;
+}
+
+#level-summary-card h2 {
+  margin-top: 20px;
+  font-size: 24px;
+  color: #143D8C;
+}
+
+#summary-score-info {
+  font-size: 18px;
+  color: #333;
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+#educational-content {
+  text-align: left;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fffcfc;
+}
+
+#educational-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #555;
+}
+
+#summary-target-name {
+  color: #54B848;
+  font-weight: bold;
+}
+
+#summary-example-icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px dashed #ccc;
+}
+
+.summary-example-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid #54B848;
+}
+
+#next-level-btn {
+  /* Izmanto to pašu stilu, kas menu-btn */
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #143D8C, #0a2e6f);
+  /* citas krāsas, lai atšķirtos no EndGame */
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+#next-level-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(20, 61, 140, .45);
+}
+
+
+#game-over-screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+
 #game-over-screen.active {
-  display: flex;               /* shown only at game over */
+  display: flex;
   justify-content: center;
   align-items: center;
   pointer-events: auto;
@@ -438,7 +500,7 @@ a { color: #143D8C; }
   border-radius: 20px;
   text-align: center;
 
-  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 
   display: flex;
   flex-direction: column;
@@ -478,23 +540,17 @@ a { color: #143D8C; }
   transform: scale(1.05);
 }
 
-/* ---------------------------- */
-/* BEAUTIFUL NICKNAME OVERLAY  */
-/* ---------------------------- */
 
-/* Fullscreen cover */
+
 #nickname-overlay {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
 
-  /* smooth fade to match the green game background */
-  background: linear-gradient(
-    180deg,
-    #085511 0%,      /* transition from purple (index) */
-    #54B848 70%      /* into game green */
-  );
+  background: linear-gradient(180deg,
+      #085511 0%,
+      #54B848 70%);
 
   display: flex;
   justify-content: center;
@@ -505,16 +561,16 @@ a { color: #143D8C; }
   animation: overlayFade 0.6s ease forwards;
 }
 
-/* Card */
+
 #nickname-card {
-  background: rgba(255,255,255,0.92);
+  background: rgba(255, 255, 255, 0.92);
   width: 460px;
   max-width: 95%;
   padding: 40px 35px;
   border-radius: 28px;
 
   text-align: center;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
 
   display: flex;
   flex-direction: column;
@@ -524,7 +580,7 @@ a { color: #143D8C; }
   backdrop-filter: blur(8px);
 }
 
-/* Title */
+
 #nickname-card h1 {
   margin: 0;
   font-size: 40px;
@@ -533,14 +589,14 @@ a { color: #143D8C; }
   letter-spacing: -1px;
 }
 
-/* Subtitle */
+
 #nickname-card p {
   margin: 0;
   font-size: 20px;
   color: #333;
 }
 
-/* Icon above text */
+
 #nickname-card::before {
   content: "👋";
   font-size: 60px;
@@ -548,7 +604,7 @@ a { color: #143D8C; }
   animation: waveAnim 1.4s infinite ease-in-out;
 }
 
-/* Input box */
+
 #nickname-input {
   padding: 14px 16px;
   font-size: 20px;
@@ -561,10 +617,10 @@ a { color: #143D8C; }
 
 #nickname-input:focus {
   border-color: #54B848;
-  box-shadow: 0 0 10px rgba(84,184,72,.4);
+  box-shadow: 0 0 10px rgba(84, 184, 72, .4);
 }
 
-/* Button */
+
 #nickname-ok {
   padding: 16px 20px;
   font-size: 22px;
@@ -579,22 +635,33 @@ a { color: #143D8C; }
 
 #nickname-ok:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(84,184,72,.45);
+  box-shadow: 0 4px 12px rgba(84, 184, 72, .45);
 }
 
-/* ---------------------------- */
-/* Animations                   */
-/* ---------------------------- */
+/*Responsivitāte*/
 
 @keyframes overlayFade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes waveAnim {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(10deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes fadeInUp {
@@ -602,37 +669,162 @@ a { color: #143D8C; }
     transform: translateY(40px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
   }
 }
 
-/* ---------------------------- */
-/* RESPONSIVE                  */
-/* ---------------------------- */
 @media (max-width: 900px) and (min-width: 421px) {
-    #game { width: min(94vw, 520px); }
-    .bin { width: 16%; }
-    .item { width: 4rem; height: 4rem; }
+  #game {
+    width: min(94vw, 560px);
+  }
+
+  #layout-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    height: auto;
+    padding: 2% 4%;
+  }
+
+  .side-box {
+    max-width: 420px;
+  }
+
+  .item {
+    width: clamp(40px, 6%, 56px);
+  }
 }
 
 @media (max-width: 420px) {
-    img { width: 280px; }
-    h1 { font-size: 40px; }
-    .startpoga { padding: 14px 28px; font-size: 18px; }
+  img {
+    width: 280px;
+  }
 
-    .trash-bg-1,
-    .trash-bg-2,
-    .trash-bg-3,
-    .trash-bg-4,
-    .trash-bg-5,
-    .trash-bg-6,
-    .trash-bg-7,
-    .trash-bg-8,
-    .trash-bg-9,
-    .trash-bg-10,
-    .trash-bg-11 {
-        font-size: 48px;
-    }
+  h1 {
+    font-size: 40px;
+  }
+
+  .startpoga {
+    padding: 14px 28px;
+    font-size: 18px;
+  }
+
+  .trash-bg-1,
+  .trash-bg-2,
+  .trash-bg-3,
+  .trash-bg-4,
+  .trash-bg-5,
+  .trash-bg-6,
+  .trash-bg-7,
+  .trash-bg-8,
+  .trash-bg-9,
+  .trash-bg-10,
+  .trash-bg-11 {
+    font-size: 48px;
+  }
+
+
+  #game {
+    height: 86vh;
+  }
+
+  .item {
+    width: clamp(36px, 8%, 48px);
+  }
+
+  #layout-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 2% 3%;
+    height: auto;
+  }
+
+  .side-box {
+    max-width: 92%;
+    padding: 12px 14px;
+  }
+
+  #player-name-left {
+    font-size: 28px;
+    padding: 10px 16px;
+  }
+}
+
+#mobile-controls {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  #mobile-controls {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    gap: 16px;
+    z-index: 10000;
+    background: transparent;
+    padding: 12px 8px;
+    pointer-events: auto;
+    align-items: center;
+  }
+
+  #mobile-controls::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -8px;
+    bottom: -8px;
+    margin: auto;
+    width: calc(100% + 40px);
+    height: 96px;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 56px;
+    z-index: 9998;
+    pointer-events: none;
+  }
+
+}
+
+.mobile-btn {
+  background: linear-gradient(180deg, #54B848, #3c8d34);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  width: 68px;
+  height: 68px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+  margin: 0 8px;
+  min-width: 68px;
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.mobile-btn i {
+  pointer-events: none;
+}
+
+.mobile-btn:active,
+.mobile-btn:focus {
+  transform: translateY(1px) scale(.98);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  outline: none;
+}
+
+.mobile-btn[aria-pressed="true"] {
+  opacity: 0.95;
 }
